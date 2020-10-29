@@ -15,19 +15,18 @@ public class UserController {
     User user = new User();
 
     @PostMapping(path="/create")
-    public @ResponseBody String createUser (@RequestParam String name, String email, String password) {
-        user.setName(name);
-        user.setEmail(email);
-        user.setPassword(password);
+    public @ResponseBody String createUser (@RequestBody User newUser) {
+        user.setName(newUser.getName());
+        user.setEmail(newUser.getEmail());
+        user.setPassword(newUser.getPassword());
         userRepository.save(user);
         return "Saved";
     }
 
-    @GetMapping(path="/authenticateUser")
-    public @ResponseBody
-    Boolean authenticateUser(@RequestParam String email, String password) {
+    @PostMapping(path="/authenticateUser")
+    public @ResponseBody Boolean authenticateUser(@RequestBody User userInfo) {
         try {
-            if(email.equalsIgnoreCase(userRepository.findByEmailAndPassword(email, password).getEmail())) {
+            if(userInfo.getEmail().equalsIgnoreCase(userRepository.findByEmailAndPassword(userInfo.getEmail(), userInfo.getPassword()).getEmail())) {
                 return true;
             }
             return false;
