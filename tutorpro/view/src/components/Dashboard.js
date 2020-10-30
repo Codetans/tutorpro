@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
+import SideNav from './SideNav';
+import MainContentPanel from './MainContentPanel';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -21,16 +25,10 @@ class Dashboard extends Component {
     }
     return (
       <div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <h1>Welcome to the Dashboard</h1>
-        <br />
-        <br />
-        <br />
-        <br />
-        <button onClick={this.logout}>Log Out</button>
+        <Header />
+        <SideNav />
+        <MainContentPanel />
+        <Footer />
       </div>
     );
   }
