@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
+import { Container, Row, Col, Button} from 'reactstrap';
 
 class Header extends Component {
   constructor(props) {
@@ -20,10 +21,14 @@ class Header extends Component {
       return <Redirect to="/" />
     }
     return (
-      <div>
-        <h1>Welcome to the Dashboard</h1>
-        <button onClick={this.logout}>Log Out</button>
-      </div>
+        <Row>
+            <Col>
+                <h1>TutorPro</h1>
+            </Col>
+            <Col>
+                <Button id="logout_button" className="m-2" variant="Primary" onClick={this.logout}>Log Out</Button>
+            </Col>
+        </Row>
     );
   }
 }
