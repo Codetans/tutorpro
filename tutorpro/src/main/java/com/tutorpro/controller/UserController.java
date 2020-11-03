@@ -1,5 +1,6 @@
 package com.tutorpro.controller;
 
+import com.tutorpro.services.PasswordEncoderGenerator;
 import com.tutorpro.model.User;
 import com.tutorpro.model.UserRepository;
 import org.springframework.aop.AopInvocationException;
@@ -15,6 +16,7 @@ public class UserController {
     private UserRepository userRepository;
     User user = new User();
     int id = 0;
+    PasswordEncoderGenerator passwordEncoderGenerator = new PasswordEncoderGenerator();
 
     @PostMapping(path="/create")
     public @ResponseBody String createUser (@RequestBody User newUser) {
@@ -28,19 +30,22 @@ public class UserController {
         user.setId(id);
         user.setName(newUser.getName());
         user.setEmail(newUser.getEmail());
-        user.setPassword(newUser.getPassword());
+        user.setPassword(passwordEncoderGenerator.hashPassword(newUser.getPassword()));
         userRepository.save(user);
         return "Saved";
     }
 
     @PostMapping(path="/authenticateUser")
     public @ResponseBody Boolean authenticateUser(@RequestBody User userInfo) {
+
         try {
-            if(userInfo.getEmail().equalsIgnoreCase(userRepository.findByEmailAndPassword(userInfo.getEmail(), userInfo.getPassword()).getEmail())) {
+            User user = userRepository.findByEmail(userInfo.getEmail());
+            if (passwordEncoderGenerator.authenticateUser(userInfo.getPassword(), user.getPassword())) {
                 return true;
+            } else {
+                return false;
             }
-            return false;
-        } catch (NullPointerException n) {
+        } catch (NullPointerException n){
             return false;
         }
     }
