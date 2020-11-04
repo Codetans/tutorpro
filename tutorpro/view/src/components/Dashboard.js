@@ -4,9 +4,22 @@ import Header from './Header';
 import Footer from './Footer';
 import SideNav from './SideNav';
 import MainContentPanel from './MainContentPanel';
-import '../stylesheets/main.scss';
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col} from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
+
+const styles = {
+  container: {
+      height: '100vh'
+  },
+  headerRow: {
+      height: '15%'
+  },
+  mainRow: {
+      height: '70%'
+  },
+  footerRow: {
+      height: '15%'
+  }
+}
 
 class Dashboard extends Component {
   constructor(props) {
@@ -27,23 +40,22 @@ class Dashboard extends Component {
       return <Redirect to="/" />
     }
     return (
-      <Container>
-        <Row id="dash_header">
-            <Header />
-        </Row>
-        <Row>
-            <Col id="dash_side_nav">
-                <SideNav />
-            </Col>
-            <Col id="dash_main_content">
-                <MainContentPanel />
-            </Col>
-        </Row>
-        <Row id="dash_footer">
-            <Footer />
-        </Row>
+      <div className="DashBoard">
+            <Container fluid style={styles.container}>
+                <Row style={styles.headerRow}>
+                    <Col ><Header>Header</Header></Col>
+                    
+                </Row>
+                <Row style={styles.mainRow}>
+                    <Col xs="4"><SideNav>SideNav</SideNav></Col>
+                    <Col xs="8"><MainContentPanel>MainContentPanel</MainContentPanel></Col>
+                </Row>
+                <Row style={styles.footerRow}>
+                    <Col><Footer>Footer</Footer></Col>
+                </Row>
 
-      </Container>
+            </Container>
+        </div>
     );
   }
 }
