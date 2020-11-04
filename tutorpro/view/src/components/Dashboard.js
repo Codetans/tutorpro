@@ -4,6 +4,9 @@ import Header from './Header';
 import Footer from './Footer';
 import SideNav from './SideNav';
 import MainContentPanel from './MainContentPanel';
+import '../stylesheets/main.scss';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { Container, Row, Col} from 'reactstrap';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -24,12 +27,23 @@ class Dashboard extends Component {
       return <Redirect to="/" />
     }
     return (
-      <div>
-        <Header />
-        <SideNav />
-        <MainContentPanel />
-        <Footer />
-      </div>
+      <Container>
+        <Row id="dash_header">
+            <Header />
+        </Row>
+        <Row>
+            <Col id="dash_side_nav">
+                <SideNav />
+            </Col>
+            <Col id="dash_main_content">
+                <MainContentPanel />
+            </Col>
+        </Row>
+        <Row id="dash_footer">
+            <Footer />
+        </Row>
+
+      </Container>
     );
   }
 }

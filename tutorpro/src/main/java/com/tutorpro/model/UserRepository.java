@@ -7,5 +7,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     @Query(value = "SELECT max(id) FROM User")
     public int max();
 
-    public User findByEmailAndPassword(String email, String password);
+    public User findByEmail(String email);
+
 }
