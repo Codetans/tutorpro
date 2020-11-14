@@ -1,8 +1,6 @@
 import React from 'react'
-import {Component} from 'react'
 import { ListGroup, ListGroupItem } from 'reactstrap';
-import { Container, Row, Col } from 'reactstrap';
-
+import { Container } from 'reactstrap';
 
 const styles = {
     sideNavContainerStyle: {
@@ -11,21 +9,19 @@ const styles = {
     }
   }
 
-class SideNav extends Component {
-    render() {
-        return (
+const SideNav = (props) =>  {
+    return (
         <Container fluid style={styles.sideNavContainerStyle} className="mx-flex">
             <ListGroup className="mx-auto">
                 <ListGroupItem tag="a" href="#" action>My Students</ListGroupItem>
-                <ListGroupItem tag="a" href="#" action>Take Quiz</ListGroupItem>
+                <ListGroupItem tag="a" href="#" action onClick={() => {props.changeMode("quiz")}}>Take Quiz</ListGroupItem>
                 <ListGroupItem tag="a" href="#" action>Tutorials</ListGroupItem>
                 <ListGroupItem tag="a" href="#" action>Build Your Own Quiz</ListGroupItem>
                 <ListGroupItem tag="a" href="#" action>Resources</ListGroupItem>
                 <ListGroupItem tag="a" href="#" action>Find a Tutor</ListGroupItem>
             </ListGroup>
         </Container>
-        )
-    }
+    )
 }
 
 

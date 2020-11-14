@@ -36,17 +36,17 @@ public class UserController {
     }
 
     @PostMapping(path="/authenticateUser")
-    public @ResponseBody Boolean authenticateUser(@RequestBody User userInfo) {
+    public @ResponseBody String authenticateUser(@RequestBody User userInfo) {
 
         try {
             User user = userRepository.findByEmail(userInfo.getEmail());
             if (passwordEncoderGenerator.authenticateUser(userInfo.getPassword(), user.getPassword())) {
-                return true;
+                return user.getEmail();
             } else {
-                return false;
+                return "Username or password is incorrect";
             }
         } catch (NullPointerException n){
-            return false;
+            return "Username or password is incorrect";
         }
     }
 }

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import React, { useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import SideNav from './SideNav';
@@ -21,43 +20,30 @@ const styles = {
   }
 }
 
-class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loggedOut: false
-    }
+const DashBoard = (props) => {
+  const [mode, setMode] = useState('');
+
+  function changeMode(selectedMode) {
+    setMode(selectedMode);
   }
 
-  logout = () => {
-    localStorage.removeItem("token");
-    this.setState({
-      loggedOut: true
-    })
-  }
-  render() {
-    if(this.state.loggedOut) {
-      return <Redirect to="/" />
-    }
-    return (
-      <div className="DashBoard">
-            <Container fluid style={styles.container}>
-                <Row style={styles.headerRow}>
-                    <Col ><Header>Header</Header></Col>
-                    
-                </Row>
-                <Row style={styles.mainRow}>
-                    <Col xs="4"><SideNav>SideNav</SideNav></Col>
-                    <Col xs="8"><MainContentPanel>MainContentPanel</MainContentPanel></Col>
-                </Row>
-                <Row style={styles.footerRow}>
-                    <Col><Footer>Footer</Footer></Col>
-                </Row>
+  return (
+    <div className="DashBoard">
+      <Container fluid style={styles.container}>
+          <Row style={styles.headerRow}>
+              <Col ><Header logOut={props.logOut}/></Col>
+          </Row>
+          <Row style={styles.mainRow}>
+              <Col xs="4"><SideNav changeMode={changeMode}/></Col>
+              <Col xs="8"><MainContentPanel userName={props.userName} mode={mode}/></Col>
+          </Row>
+          <Row style={styles.footerRow}>
+              <Col><Footer>Footer</Footer></Col>
+          </Row>
 
-            </Container>
-        </div>
-    );
-  }
+      </Container>
+    </div>
+  )
 }
 
-export default withRouter(Dashboard);
+export default DashBoard

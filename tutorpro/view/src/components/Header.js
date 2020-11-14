@@ -12,34 +12,16 @@ const styles = {
   }
 }
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loggedOut: false
-    }
-  }
-
-  logout = () => {
-    localStorage.removeItem("token");
-    this.setState({
-      loggedOut: true
-    })
-  }
-  render() {
-    if(this.state.loggedOut) {
-      return <Redirect to="/" />
-    }
-    return (
-          <Container fluid style={styles.container}>
-                <Row>
-                    <Col xs = "2" ><h1 ><Badge color="secondary">TutorPro</Badge></h1></Col>
-                    <Col xs = "8"></Col>
-                    <Col xs = "2"><Button color="primary" onClick={this.logout}>Log Out</Button></Col>
-                </Row>
-          </Container>
-    );
-  }
+const Header = (props) =>  {
+  return (
+    <Container fluid style={styles.container}>
+      <Row>
+          <Col xs = "2" ><h1 ><Badge color="secondary">TutorPro</Badge></h1></Col>
+          <Col xs = "8"></Col>
+          <Col xs = "2"><Button color="primary" onClick={props.logOut}>Log Out</Button></Col>
+      </Row>
+    </Container>
+  );
 }
 
-export default withRouter(Header);
+export default Header

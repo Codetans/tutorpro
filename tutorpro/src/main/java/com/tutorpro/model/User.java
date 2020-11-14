@@ -10,6 +10,9 @@ public class User {
     private String name;
     private String email;
     private String password;
+    private Integer studentID;
+    private Integer teacherID;
+    private Integer parentID;
 
     public Integer getId() {
         return id;
@@ -41,5 +44,29 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+
+    public Integer getTeacherID() {
+        return teacherID;
+    }
+
+    public void setTeacherID(int teacherID) {
+        this.teacherID = teacherID;
+    }
+
+    public Integer getParentID() {
+        return parentID;
+    }
+
+    public void setParentID(int parentID) {
+        this.parentID = parentID;
     }
 }

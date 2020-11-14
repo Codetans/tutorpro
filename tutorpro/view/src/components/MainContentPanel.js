@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { Jumbotron, Button } from 'reactstrap';
-import { Container, Row, Col } from 'reactstrap';
+import React from 'react';
+import { Container } from 'reactstrap';
+import Quiz from './Quiz';
+import Welcome from './Welcome';
 
 const styles = {
   container: {
@@ -12,23 +13,13 @@ const styles = {
   }
 }
 
-class MainContentPanel extends Component {
-
-  render() {
-    return (
-      <Container style={styles.container}>
-        <Jumbotron style={styles.Jumbotron}>
-            <h1 className="display-5">Begin your assessment</h1>
-            <p className="lead">This is an assessment that will help us learn more about [insert_student_name_here].</p>
-            <hr className="my-2" />
-            <p>The assessment will contain questions from various subjects.</p>
-            <p className="lead">
-              <Button color="primary">Start</Button>
-            </p>
-        </Jumbotron>
-      </Container>
-    );
-  }
+const MainContentPanel = (props) => {
+  return (
+    <Container style={styles.container}>
+      {props.mode == "" && <Welcome userName={props.userName}/>}
+      {props.mode == "quiz" && <Quiz />}
+    </Container>
+  );
 }
 
 export default MainContentPanel;
