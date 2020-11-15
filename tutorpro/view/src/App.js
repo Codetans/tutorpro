@@ -5,7 +5,6 @@ import Dashboard from './components/Dashboard';
 import axios from 'axios';
 import LoginRegistration from './components/LoginRegister';
 import { useEffect } from 'react';
-import SideNav from './components/SideNav';
 
 require.context('./stylesheets/', true, /\.(css|scss)$/i)
 
@@ -18,6 +17,14 @@ export default function App() {
   const [newPassword, setNewPassword] = useState('');
   const [newUserType, setNewUserType] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    if(localStorage.getItem("token") === "t") {
+      setIsAuthenticated(true);
+      setUserName(localStorage.getItem("user"));
+      setUserType(localStorage.getItem("type"));
+    }
+  }, [userName, userType]);
 
   function createUser(newUserName, newEmail, newPassword, newUserType) {
     setNewUserName(newUserName);
@@ -39,23 +46,20 @@ export default function App() {
     })
   }
 
-  function authenticateUser(authUseremail, authPassword) {
-    console.log('the login button was clicked. Username is ' + authUseremail)
-    console.log('the login button was clicked. Password is ' + authPassword)
-  
+  function authenticateUser(authUseremail, authPassword) {  
     axios.post('http://localhost:8080/user/authenticateUser', {
         email: authUseremail,
         password: authPassword
     })
     .then(res => {
-        console.log(res.data);
-        console.log("user name is ", authUseremail);
         if (res.data.userEmail === authUseremail) {
             setUserEmail(authUseremail);
             setUserName(res.data.userName);
             setUserType(res.data.userType);
             setIsAuthenticated(true);
             localStorage.setItem("token", "t");
+            localStorage.setItem("user", res.data.userName);
+            localStorage.setItem("type", res.data.userType);
         } else {
             alert("Bad Username or password!");
         }
@@ -65,12 +69,12 @@ export default function App() {
   function logOut() {
     console.log("inside the logOut function");
     setIsAuthenticated(false);
+    localStorage.removeItem("token");
   }
 
   return (
     <div className="App">
-      {isAuthenticated ? <Dashboard userName={userName} logOut={logOut}/> : <LoginRegistration authenticateUser={authenticateUser} createUser={createUser}/>}
-      <SideNav userType={userType} />
+      {isAuthenticated ? <Dashboard userName={userName} userType={userType} logOut={logOut}/> : <LoginRegistration authenticateUser={authenticateUser} createUser={createUser}/>}
     </div>
   );
 }

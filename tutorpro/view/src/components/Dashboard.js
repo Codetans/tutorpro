@@ -34,7 +34,7 @@ const DashBoard = (props) => {
               <Col ><Header logOut={props.logOut}/></Col>
           </Row>
           <Row style={styles.mainRow}>
-              <Col xs="4"><SideNav changeMode={changeMode}/></Col>
+              <Col xs="4"><SideNav changeMode={changeMode} userType={props.userType}/></Col>
               <Col xs="8"><MainContentPanel userName={props.userName} mode={mode}/></Col>
           </Row>
           <Row style={styles.footerRow}>
