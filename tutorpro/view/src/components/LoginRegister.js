@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import {Tabs, Tab, TabList, TabPanel} from 'react-tabs';
+import { Label, Input } from 'reactstrap';
 import 'react-tabs/style/react-tabs.css'
 
 const LoginRegistration = (props) => {
-    const [userName, setUserName] = useState('');
+    const [userEmail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
     const [newUserName, setNewUserName] = useState('');
     const [newEmail, setNewEmail] = useState('');
@@ -11,12 +12,14 @@ const LoginRegistration = (props) => {
 
     function handleAuthenticateSubmit(e) {
         e.preventDefault();
-        props.childAuthenticateUser(userName, password);
+        props.authenticateUser(userEmail, password);
     }
 
     function handleCreateSubmit(e) {
         e.preventDefault();
-        props.childCreateUser(newUserName, newEmail, newPassword);
+        var e = document.getElementById("userType");
+        var newUserType = e.options[e.selectedIndex].value
+        props.createUser(newUserName, newEmail, newPassword, newUserType);
     }
 
     return (
@@ -32,7 +35,7 @@ const LoginRegistration = (props) => {
                             <div className="form-group">
                                 <br />
                                 <label>Email address</label>
-                                <input type="email" className="form-control" name="email" placeholder="Enter email" onChange={(e) => setUserName(e.target.value)} />
+                                <input type="email" className="form-control" name="email" placeholder="Enter email" onChange={(e) => setUserEmail(e.target.value)} />
                             </div>
 
                             <div className="form-group">
@@ -46,7 +49,7 @@ const LoginRegistration = (props) => {
                         <form>
                             <div className="form-group">
                                 <br />
-                                <label>First name</label>
+                                <label>Name</label>
                                 <input type="text" className="form-control" name="name" placeholder="Enter Name" onChange={(e) => setNewUserName(e.target.value)} />
                             </div>
 
@@ -58,6 +61,15 @@ const LoginRegistration = (props) => {
                             <div className="form-group">
                                 <label>Password</label>
                                 <input type="password" className="form-control" name="password" placeholder="Enter password" onChange={(e) => setNewPassword(e.target.value)} />
+                            </div>
+
+                            <div className="form-group">
+                                <Label>Select User Type</Label>
+                                <Input type="select" name="userType" id="userType">
+                                    <option value="student">Student</option>
+                                    <option value="teacher">Teacher</option>
+                                    <option value="parent">Parent</option>
+                                </Input>
                             </div>
 
                             <button onClick={handleCreateSubmit} className="btn btn-primary btn-block">Sign Up</button>

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Badge } from 'reactstrap'
 import { Container, Row, Col } from 'reactstrap';

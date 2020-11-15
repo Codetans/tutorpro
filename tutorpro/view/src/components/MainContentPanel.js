@@ -16,8 +16,8 @@ const styles = {
 const MainContentPanel = (props) => {
   return (
     <Container style={styles.container}>
-      {props.mode == "" && <Welcome userName={props.userName}/>}
-      {props.mode == "quiz" && <Quiz />}
+        {props.mode === "" && <Welcome userName={props.userName}/>}
+        {props.mode === "quiz" && <Quiz />}
     </Container>
   );
 }

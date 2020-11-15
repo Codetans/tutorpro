@@ -10,9 +10,8 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private Integer studentID;
-    private Integer teacherID;
-    private Integer parentID;
+    private String userType;
+    private Integer gradeLevel;
 
     public Integer getId() {
         return id;
@@ -46,27 +45,15 @@ public class User {
         this.password = password;
     }
 
-    public Integer getStudentID() {
-        return studentID;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setStudentID(int studentID) {
-        this.studentID = studentID;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
-    public Integer getTeacherID() {
-        return teacherID;
-    }
-
-    public void setTeacherID(int teacherID) {
-        this.teacherID = teacherID;
-    }
-
-    public Integer getParentID() {
-        return parentID;
-    }
-
-    public void setParentID(int parentID) {
-        this.parentID = parentID;
+    public Integer getGradeLevel() {
+        return gradeLevel;
     }
 }
