@@ -13,7 +13,8 @@ const SideNav = (props) =>  {
     return (
         <Container fluid style={styles.sideNavContainerStyle} className="mx-flex">
             <ListGroup className="mx-auto">
-                <ListGroupItem tag="a" href="#" action>My Profile</ListGroupItem>
+                <ListGroupItem tag="a" href="#" action onClick={() => {props.changeMode("welcome")}}>Welcome</ListGroupItem>
+                <ListGroupItem tag="a" href="#" action onClick={() => {props.changeMode("profile")}}>My Profile</ListGroupItem>
                 {(props.userType !== "student") ? (<ListGroupItem tag="a" href="#" action>My Students</ListGroupItem>) : (null)}
                 <ListGroupItem tag="a" href="#" action onClick={() => {props.changeMode("quiz")}}>Take Quiz</ListGroupItem>
                 <ListGroupItem tag="a" href="#" action>Tutorials</ListGroupItem>

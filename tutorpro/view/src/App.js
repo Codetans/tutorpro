@@ -23,6 +23,7 @@ export default function App() {
       setIsAuthenticated(true);
       setUserName(localStorage.getItem("user"));
       setUserType(localStorage.getItem("type"));
+      setUserEmail(localStorage.getItem("email"));
     }
   }, [userName, userType]);
 
@@ -60,6 +61,7 @@ export default function App() {
             localStorage.setItem("token", "t");
             localStorage.setItem("user", res.data.userName);
             localStorage.setItem("type", res.data.userType);
+            localStorage.setItem("email", res.data.userEmail);
         } else {
             alert("Bad Username or password!");
         }
@@ -74,7 +76,7 @@ export default function App() {
 
   return (
     <div className="App">
-      {isAuthenticated ? <Dashboard userName={userName} userType={userType} logOut={logOut}/> : <LoginRegistration authenticateUser={authenticateUser} createUser={createUser}/>}
+      {isAuthenticated ? <Dashboard userName={userName} userEmail={userEmail} userType={userType} logOut={logOut}/> : <LoginRegistration authenticateUser={authenticateUser} createUser={createUser}/>}
     </div>
   );
 }
