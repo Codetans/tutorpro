@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { Button, ButtonGroup } from 'reactstrap';
+import About from './About';
 
 const styles = {
   container: {
@@ -20,7 +21,7 @@ class Footer extends Component {
         <Row style={styles.row}>
           <Col xs="0">
             <ButtonGroup>
-              <Button>About</Button>
+              <Button>About<About /></Button>
               <Button>Contact</Button>
               <Button>Help</Button>
             </ButtonGroup>
