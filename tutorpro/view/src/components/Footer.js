@@ -26,7 +26,7 @@ const Footer = (props) => {
           <Col xs="0">
             <ButtonGroup>
               <Button onClick={toggle}>About</Button>
-                <Modal isOpen={modal} toggle={toggle}>
+                <Modal isOpen={modal} toggle={toggle} className="modal-lg">
                   <ModalHeader toggle={toggle}>About</ModalHeader>
                     <ModalBody>
                       <About />
