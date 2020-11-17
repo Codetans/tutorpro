@@ -14,10 +14,10 @@ const styles = {
 const Header = (props) =>  {
   return (
     <Container fluid style={styles.container}>
-      <Row>
-          <Col xs = "2" ><h1 ><Badge color="secondary">TutorPro</Badge></h1></Col>
-          <Col xs = "8"></Col>
-          <Col xs = "2"><Button color="primary" onClick={props.logOut}>Log Out</Button></Col>
+      <Row className="h-100">
+          <Col xs = "3" className="align-self-center"><h1 className="h-100 float-left"><Badge color="secondary">TutorPro</Badge></h1></Col>
+          <Col xs = "7"></Col>
+          <Col xs = "2" className="align-self-center"><Button color="primary" onClick={props.logOut}>Log Out</Button></Col>
       </Row>
     </Container>
   );

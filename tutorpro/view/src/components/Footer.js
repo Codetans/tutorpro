@@ -23,7 +23,7 @@ const Footer = (props) => {
     return (
       <Container fluid style={styles.container}>
         <Row style={styles.row}>
-          <Col xs="0">
+          <Col xs="0" className="align-self-center">
             <ButtonGroup>
               <Button onClick={toggle}>About</Button>
                 <Modal isOpen={modal} toggle={toggle} className="modal-lg">
