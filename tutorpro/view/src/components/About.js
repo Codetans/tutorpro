@@ -1,24 +1,12 @@
-import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardImg, CardTitle, CardText } from 'reactstrap';
+import React from 'react';
+import { Card, CardImg, CardTitle, CardText } from 'reactstrap';
 import { Container } from 'reactstrap';
 import img from './assets/weber_state_logo.jpg'
 
-const About = (props) => {
-    const {
-        buttonLabel,
-        className
-    } = props;
-
-    const [modal, setModal] = useState(false);
-
-    const toggle = () => setModal(!modal);
+const About = () => {
 
     return (
       <Container>
-          <Button onClick={toggle}>{buttonLabel}</Button>
-          <Modal isOpen={modal} toggle={toggle} className={className}>
-              <ModalHeader toggle={toggle}>About</ModalHeader>
-              <ModalBody>
                 <Card>
                 <CardImg top width="100%" src={img} alt="Weber Logo" />
                     <CardTitle tag="h4">What is TutorPro?</CardTitle>
@@ -40,13 +28,7 @@ const About = (props) => {
                     which connects to MySQL. Our repository continues to grow each day as we find ways to develop a better application.
                     </CardText>
                 </Card>
-              </ModalBody>
-              <ModalFooter>
-                  <Button onClick={toggle}>Cancel</Button>
-              </ModalFooter>
-          </Modal>
       </Container>
     );
-  }
-
+}
 export default About
