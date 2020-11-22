@@ -41,8 +41,10 @@ export default function App() {
     })
     .then(res => {
         console.log(res);
-        if(res.data === "Saved") {
-            alert("User created successfully");
+        if(res.data === "User created successfully") {
+          alert("User created successfully");
+        } else if(res.data === "User already exists") {
+          alert("User already exists");
         }
     })
   }

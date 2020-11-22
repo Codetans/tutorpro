@@ -8,6 +8,7 @@ public class Parent {
     @Id
     private Integer parentID;
     private Integer studentID;
+    private Integer userID;
 
     public Integer getParentID() {
         return parentID;
@@ -23,6 +24,15 @@ public class Parent {
 
     public void setStudentID(Integer studentID) {
         this.studentID = studentID;
+    }
+
+    public Integer getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Integer userID) {
+        this.userID = userID;
+
     }
 
 }

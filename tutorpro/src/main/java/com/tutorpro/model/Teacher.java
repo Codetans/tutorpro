@@ -8,6 +8,7 @@ public class Teacher {
     @Id
     private Integer teacherID;
     private Integer studentID;
+    private Integer userID;
 
     public Integer getTeacherID() {
         return teacherID;
@@ -25,4 +26,12 @@ public class Teacher {
         this.studentID = studentID;
     }
 
+    public Integer getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Integer userID) {
+        this.userID = userID;
+
+    }
 }
