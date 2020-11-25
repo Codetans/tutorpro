@@ -2,7 +2,6 @@ package com.tutorpro.services;
 
 import com.tutorpro.model.*;
 import com.tutorpro.model.UserRepository;
-import org.springframework.aop.AopInvocationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +29,11 @@ public class UserCreationService {
     boolean saved = false;
     String userCreationResult = "";
     String userEmail = "";
+
+    public void deleteUser(String email) {
+        User user = userRepository.findByEmail(email);
+        userRepository.deleteById(user.getId());
+    }
 
     public String createNewUser(User newUser) {
 
