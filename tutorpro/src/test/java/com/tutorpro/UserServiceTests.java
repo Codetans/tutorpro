@@ -1,7 +1,7 @@
 package com.tutorpro;
 
 import com.tutorpro.model.User;
-import com.tutorpro.services.UserCreationService;
+import com.tutorpro.services.UserService;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ class UserServiceTests {
 	User user = new User();
 
 	@Autowired
-	private UserCreationService userCreationService;
+	private UserService userService;
 
 	@BeforeAll
 	void setUp() {
@@ -29,13 +29,13 @@ class UserServiceTests {
 	@Test
 	@Order(1)
 	void testSuccessfulUserCreation() {
-		Assertions.assertEquals("User created successfully", userCreationService.createNewUser(user));
+		Assertions.assertEquals("User created successfully", userService.createNewUser(user));
 	}
 
 	@Test
 	@Order(2)
 	void testDuplicateUserNotAllowed() {
-		Assertions.assertEquals("User already exists", userCreationService.createNewUser(user));
+		Assertions.assertEquals("User already exists", userService.createNewUser(user));
 	}
 
 	@Test
@@ -45,7 +45,7 @@ class UserServiceTests {
 		testUserInfo.put("userEmail", user.getEmail());
 		testUserInfo.put("userName", user.getName());
 		testUserInfo.put("userType", user.getUserType());
-		Assertions.assertEquals(testUserInfo, userCreationService.authenticateUserCredentials(user));
+		Assertions.assertEquals(testUserInfo, userService.authenticateUserCredentials(user));
 	}
 
 	@Test
@@ -56,12 +56,12 @@ class UserServiceTests {
 		testUserInfo.put("userEmail", user.getEmail());
 		testUserInfo.put("userName", user.getName());
 		testUserInfo.put("userType", user.getUserType());
-		Assertions.assertEquals("Username or password is incorrect", userCreationService.authenticateUserCredentials(user));
+		Assertions.assertEquals("Username or password is incorrect", userService.authenticateUserCredentials(user));
 	}
 
 	@AfterAll
 	void deleteUser() {
-		userCreationService.deleteUser(user.getEmail());
+		userService.deleteUser(user.getEmail());
 	}
 
 }

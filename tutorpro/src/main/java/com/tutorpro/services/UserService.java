@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 @Service
 @Transactional
-public class UserCreationService {
+public class UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired

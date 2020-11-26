@@ -13,17 +13,17 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private UserCreationService userCreationService;
+    private UserService userService;
 
     @PostMapping(path="/create")
     public @ResponseBody
     String createUser (@RequestBody User newUser) {
-        return userCreationService.createNewUser(newUser);
+        return userService.createNewUser(newUser);
     }
 
     @PostMapping(path="/authenticateUser", produces = "application/json")
     @ResponseBody
     Object authenticateUser(@RequestBody User userInfo) {
-        return userCreationService.authenticateUserCredentials(userInfo);
+        return userService.authenticateUserCredentials(userInfo);
     }
 }
