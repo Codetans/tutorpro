@@ -1,0 +1,106 @@
+.MathQuiz body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .MathQuiz * {
+    font-family: "Verdana", cursive, sans-serif;
+    color: #ffffff;
+  }
+  
+  .MathQuiz body {
+    background-color: #7cc6fe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .MathQuiz {
+    background-color: #252d4a;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .MathQuiz .score-section {
+    display: flex;
+    font-size: 24px;
+    align-items: center;
+  }
+  
+  /* QUESTION/TIMER/LEFT SECTION */
+  .MathQuiz .question-section {
+    width: 100%;
+    position: relative;
+  }
+  
+  .MathQuiz .question-count {
+    margin-bottom: 20px;
+  }
+  
+  .MathQuiz .question-count span {
+    font-size: 28px;
+  }
+  
+  .MathQuiz .question-text {
+    margin-bottom: 12px;
+  }
+  
+  .MathQuiz .timer-text {
+    background: rgb(230, 153, 12);
+    padding: 15px;
+    margin-top: 20px;
+    margin-right: 20px;
+    border: 5px solid rgb(255, 189, 67);
+    border-radius: 15px;
+    text-align: center;
+  }
+  
+  /* ANSWERS/RIGHT SECTION */
+  .MathQuiz .answer-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .MathQuiz button {
+    width: 100%;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #252d4a;
+    border-radius: 15px;
+    display: flex;
+    padding: 5px;
+    justify-content: flex-start;
+    align-items: center;
+    border: 5px solid #234668;
+    cursor: pointer;
+  }
+  
+  .MathQuiz .correct {
+    background-color: #2f922f;
+  }
+  
+  .MathQuiz .incorrect {
+    background-color: #ff3333;
+  }
+  
+  .MathQuiz button:hover {
+    background-color: #555e7d;
+  }
+  
+  .MathQuiz button:focus {
+    outline: none;
+  }
+  
+  .MathQuiz button svg {
+    margin-right: 5px;
+  }
