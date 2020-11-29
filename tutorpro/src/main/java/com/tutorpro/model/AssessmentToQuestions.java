@@ -6,18 +6,18 @@ import javax.persistence.Id;
 public class AssessmentToQuestions {
     @Id
     private int assessmentToQuestionID;
-    private String assessmentID;
+    private int assessmentID;
     private int questionID;
 
-    public Integer getAssessmentToQuestionID() {
+    public int getAssessmentToQuestionID() {
         return assessmentToQuestionID;
     }
     public void setAssessmentToQuestionID(Integer assessmentToQuestionID) {this.assessmentToQuestionID = assessmentToQuestionID;}
 
-    public String getAssessmentID() {
+    public int getAssessmentID() {
         return assessmentID;
     }
-    public void setAssessmentID(String assessmentID) {
+    public void setAssessmentID(int assessmentID) {
         this.assessmentID = assessmentID;
     }
 
