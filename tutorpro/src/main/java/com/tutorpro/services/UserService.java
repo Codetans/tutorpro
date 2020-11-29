@@ -33,6 +33,17 @@ public class UserService {
     public void deleteUser(String email) {
         User user = userRepository.findByEmail(email);
         userRepository.deleteById(user.getId());
+        String getUserType = user.getUserType();
+        if (getUserType.equals("student")) {
+            int studentId = studentRepository.getStudentIdByUserId(user.getId());
+            studentRepository.deleteById(studentId);
+        } else if (getUserType == "teacher") {
+            int teacherId = teacherRepository.getTeacherIdByUserId(user.getId());
+            teacherRepository.deleteById(teacherId);
+        } else if (getUserType == "parent") {
+            int parentId = parentRepository.getParentIdByUserId(user.getId());
+            parentRepository.deleteById(parentId);
+        }
     }
 
     public String createNewUser(User newUser) {

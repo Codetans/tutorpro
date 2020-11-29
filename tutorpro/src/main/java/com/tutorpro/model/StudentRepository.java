@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StudentRepository extends CrudRepository<Student, Integer> {
-    @Query(value = "SELECT max(id) FROM Student")
+    @Query(value = "SELECT max(studentID) FROM Student", nativeQuery = true)
     public int max();
+
+    @Query(value = "SELECT studentID FROM Student WHERE userID = :userId", nativeQuery = true)
+    public int getStudentIdByUserId(int userId);
 }
