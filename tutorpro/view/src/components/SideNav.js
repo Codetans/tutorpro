@@ -1,4 +1,5 @@
 import React from 'react'
+import Quiz from './Quiz'
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Container } from 'reactstrap';
 
@@ -23,6 +24,7 @@ const SideNav = (props) =>  {
                 <ListGroupItem tag="a" href="#" action>Find a Tutor</ListGroupItem>
             </ListGroup>
         </Container>
+        
     )
 }
 

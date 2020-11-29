@@ -35,7 +35,7 @@ const DashBoard = (props) => {
           </Row>
           <Row style={styles.mainRow}>
               <Col xs="4"><SideNav changeMode={changeMode} userType={props.userType}/></Col>
-              <Col xs="8"><MainContentPanel userName={props.userName} userEmail={props.userEmail} mode={mode}/></Col>
+              <Col xs="8"><MainContentPanel userName={props.userName} userEmail={props.userEmail} mode={mode} changeMode={changeMode}/></Col>
           </Row>
           <Row style={styles.footerRow}>
               <Col><Footer>Footer</Footer></Col>

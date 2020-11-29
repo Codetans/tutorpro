@@ -26,7 +26,7 @@ const Quiz = (props) => {
                     <CardImg top width="100%" src={img} alt="Math Calculator" />
                     <br />
                     <CardText>This quiz will assess your understanding of multiplication factors </CardText>
-                    <Button color="info">Take this quiz</Button>
+                    <Button color="info" tag="a" href="#" action onClick={() => {props.changeMode("mathquiz")}}>Take this quiz</Button>
                 </Card>
             </Col>
             <Col sm="4">
