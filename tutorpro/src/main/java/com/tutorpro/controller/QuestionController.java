@@ -23,7 +23,7 @@ public class QuestionController {
         question.setIncorrectAnswer1(newQuestion.getIncorrectAnswer1());
         question.setIncorrectAnswer2(newQuestion.getIncorrectAnswer2());
         question.setIncorrectAnswer3(newQuestion.getIncorrectAnswer3());
-        question.setSubjectId(newQuestion.getSubjectId());
+        question.setSubject(newQuestion.getSubject());
         question.setReference(newQuestion.getReference());
         questionRepository.save(question);
         return "Saved";

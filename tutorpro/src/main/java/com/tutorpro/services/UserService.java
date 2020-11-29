@@ -2,7 +2,6 @@ package com.tutorpro.services;
 
 import com.tutorpro.model.*;
 import com.tutorpro.model.UserRepository;
-import org.springframework.aop.AopInvocationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +10,7 @@ import java.util.HashMap;
 
 @Service
 @Transactional
-public class UserCreationService {
+public class UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -30,6 +29,22 @@ public class UserCreationService {
     boolean saved = false;
     String userCreationResult = "";
     String userEmail = "";
+
+    public void deleteUser(String email) {
+        User user = userRepository.findByEmail(email);
+        userRepository.deleteById(user.getId());
+        String getUserType = user.getUserType();
+        if (getUserType.equals("student")) {
+            int studentId = studentRepository.getStudentIdByUserId(user.getId());
+            studentRepository.deleteById(studentId);
+        } else if (getUserType == "teacher") {
+            int teacherId = teacherRepository.getTeacherIdByUserId(user.getId());
+            teacherRepository.deleteById(teacherId);
+        } else if (getUserType == "parent") {
+            int parentId = parentRepository.getParentIdByUserId(user.getId());
+            parentRepository.deleteById(parentId);
+        }
+    }
 
     public String createNewUser(User newUser) {
 

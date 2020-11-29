@@ -15,7 +15,7 @@ public class Question {
     private String incorrectAnswer1;
     private String incorrectAnswer2;
     private String incorrectAnswer3;
-    private String subjectId;
+    private String subject;
     private String reference;
 
 
@@ -64,11 +64,11 @@ public class Question {
         this.incorrectAnswer3 = incorrectAnswer3;
     }
 
-    public String getSubjectId() {
-        return subjectId;
+    public String getSubject() {
+        return subject;
     }
-    public void setSubjectId(String subjectId) {
-        this.subjectId = subjectId;
+    public void setSubject(String subjectId) {
+        this.subject = subjectId;
     }
 
     public String getReference() {
