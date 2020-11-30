@@ -16,13 +16,13 @@ public class AssessmentController {
     @Autowired
     AssessmentService assessmentService;
 
-    @GetMapping(path="/getStudentAssessments", produces = "application/json")
+    @PostMapping(path="/getStudentAssessments", produces = "application/json")
     public @ResponseBody
     Object getStudentAssessments(@RequestBody Assessment assessment) {
         return assessmentService.getStudentAssessments(assessment.getStudentID());
     }
 
-    @GetMapping(path="/questions", produces = "application/json")
+    @PostMapping(path="/questions", produces = "application/json")
     public @ResponseBody
     List<Question> getAssessmentQuestions(@RequestBody Assessment assessment) {
         List<Question> questions = assessmentService.getAssessmentQuestions(assessment.getAssessmentID());

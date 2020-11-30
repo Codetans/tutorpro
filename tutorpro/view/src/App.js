@@ -17,6 +17,9 @@ export default function App() {
   const [newPassword, setNewPassword] = useState('');
   const [newUserType, setNewUserType] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [badUserNameOrPassword, setBadUserNameOrPassword] = useState(false);
+  const [userAlreadyExists, setUserAlreadyExists] = useState(false);
+  const [userCreatedSuccessfully, setUserCreatedSuccessfully] = useState(false);
 
   useEffect(() => {
     if(localStorage.getItem("token") === "t") {
@@ -42,9 +45,11 @@ export default function App() {
     .then(res => {
         console.log(res);
         if(res.data === "User created successfully") {
-          alert("User created successfully");
+          setUserAlreadyExists(false);
+          setUserCreatedSuccessfully(true);
         } else if(res.data === "User already exists") {
-          alert("User already exists");
+          setUserCreatedSuccessfully(false);
+          setUserAlreadyExists(true);
         }
     })
   }
@@ -56,6 +61,7 @@ export default function App() {
     })
     .then(res => {
         if (res.data.userEmail === authUseremail) {
+            setBadUserNameOrPassword(false);
             setUserEmail(authUseremail);
             setUserName(res.data.userName);
             setUserType(res.data.userType);
@@ -65,7 +71,9 @@ export default function App() {
             localStorage.setItem("type", res.data.userType);
             localStorage.setItem("email", res.data.userEmail);
         } else {
-            alert("Bad Username or password!");
+            setBadUserNameOrPassword(true);
+            setUserCreatedSuccessfully(false);
+            setUserAlreadyExists(false);
         }
     })
   }
@@ -78,7 +86,7 @@ export default function App() {
 
   return (
     <div className="App">
-      {isAuthenticated ? <Dashboard userName={userName} userEmail={userEmail} userType={userType} logOut={logOut}/> : <LoginRegistration authenticateUser={authenticateUser} createUser={createUser}/>}
+      {isAuthenticated ? <Dashboard userName={userName} userEmail={userEmail} userType={userType} logOut={logOut}/> : <LoginRegistration authenticateUser={authenticateUser} createUser={createUser} badUserNameOrPassword={badUserNameOrPassword} userAlreadyExists={userAlreadyExists} userCreatedSuccessfully={userCreatedSuccessfully} />}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Tabs, Tab, TabList, TabPanel} from 'react-tabs';
-import { Label, Input } from 'reactstrap';
+import { Label, Input, Alert } from 'reactstrap';
 import 'react-tabs/style/react-tabs.css'
 
 const LoginRegistration = (props) => {
@@ -25,6 +25,21 @@ const LoginRegistration = (props) => {
     return (
         <div className="auth-wrapper">
             <div className="auth-inner">
+                {props.badUserNameOrPassword ? 
+                    <Alert color="danger">
+                        Incorrect login credentials
+                    </Alert> 
+                : '' }
+                {props.userAlreadyExists ? 
+                    <Alert color="danger">
+                        Email address is already in use
+                    </Alert> 
+                : ''}
+                {props.userCreatedSuccessfully ? 
+                    <Alert color="success">
+                        User created successfully
+                    </Alert> 
+                : ''}
                 <Tabs defaultIndex={0}>
                     <TabList>
                         <Tab><b>Login</b></Tab>
