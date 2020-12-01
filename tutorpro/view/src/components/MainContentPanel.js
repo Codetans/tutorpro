@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container } from 'reactstrap';
 import MathQuiz from './MathQuiz';
+import ScienceQuiz from './ScienceQuiz';
+import LanguageArtsQuiz from './LanguageArtsQuiz'
 import Profile from './Profile';
 import Quiz from './Quiz';
 import Welcome from './Welcome';
@@ -23,6 +25,8 @@ const MainContentPanel = (props) => {
         {props.mode === "quiz" && <Quiz changeMode={props.changeMode}/>}
         {props.mode === "profile" && <Profile userName={props.userName} userEmail={props.userEmail}/>}
         {props.mode === "mathquiz" && <MathQuiz/>}
+        {props.mode === "sciencequiz" && <ScienceQuiz/>}
+        {props.mode === "languageartsquiz" && <LanguageArtsQuiz/>}
     </Container>
   );
 }
