@@ -2,7 +2,7 @@
   "name": "view",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "/",
   "engines": {
     "node": "8.x"
   },
