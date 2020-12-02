@@ -10,5 +10,8 @@
         <module name="tutorpro.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tutorpro" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
