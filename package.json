@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "babel": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
     "bootstrap": "^4.5.3",
     "material-ui": "^0.20.2",
     "node-sass": "^4.14.1",
@@ -26,7 +27,7 @@
     "reactstrap": "^8.6.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "(set PORT= process.env.PORT || set PORT = 3000) && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -50,5 +51,9 @@
     "type": "git",
     "url": "https://github.com/cowancs3750fall20/group3"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "strict-mode": "^1.1.4"
+  }
 }
