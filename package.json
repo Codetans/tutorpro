@@ -14,6 +14,7 @@
     "babel": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^4.5.3",
+    "express": "^4.17.1",
     "material-ui": "^0.20.2",
     "node-sass": "^4.14.1",
     "react": "^16.14.0",
@@ -54,6 +55,8 @@
   "type": "module",
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
     "strict-mode": "^1.1.4"
   }
 }
