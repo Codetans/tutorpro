@@ -3,6 +3,8 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="tutorpro" target="11" />
+      <module name="tutorpro.main" target="11" />
+      <module name="tutorpro.test" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
