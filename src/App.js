@@ -20,6 +20,7 @@ export default function App() {
   const [badUserNameOrPassword, setBadUserNameOrPassword] = useState(false);
   const [userAlreadyExists, setUserAlreadyExists] = useState(false);
   const [userCreatedSuccessfully, setUserCreatedSuccessfully] = useState(false);
+  const server = "db-mysql-tutorpro-cluster-do-user-8590629-0.b.db.ondigitalocean.com";
 
   useEffect(() => {
     if(localStorage.getItem("token") === "t") {
@@ -36,7 +37,7 @@ export default function App() {
     setNewPassword(newPassword);
     setNewUserType(newUserType);
 
-    axios.post('http://localhost:8080/user/create', {
+    axios.post(`${server}/user/create`, {
         name: newUserName,
         email: newEmail,
         password: newPassword,
@@ -55,7 +56,7 @@ export default function App() {
   }
 
   function authenticateUser(authUseremail, authPassword) {  
-    axios.post('http://localhost:8080/user/authenticateUser', {
+    axios.post(`${server}/user/authenticateUser`, {
         email: authUseremail,
         password: authPassword
     })
