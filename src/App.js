@@ -20,7 +20,7 @@ export default function App() {
   const [badUserNameOrPassword, setBadUserNameOrPassword] = useState(false);
   const [userAlreadyExists, setUserAlreadyExists] = useState(false);
   const [userCreatedSuccessfully, setUserCreatedSuccessfully] = useState(false);
-  const server = "db-mysql-tutorpro-cluster-do-user-8590629-0.b.db.ondigitalocean.com:25060";
+  const server = "http://localhost:8080";
 
   useEffect(() => {
     if(localStorage.getItem("token") === "t") {
