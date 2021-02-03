@@ -20,7 +20,6 @@ export default function App() {
   const [badUserNameOrPassword, setBadUserNameOrPassword] = useState(false);
   const [userAlreadyExists, setUserAlreadyExists] = useState(false);
   const [userCreatedSuccessfully, setUserCreatedSuccessfully] = useState(false);
-  const server = "http://localhost:8080";
 
   useEffect(() => {
     if(localStorage.getItem("token") === "t") {
@@ -37,7 +36,7 @@ export default function App() {
     setNewPassword(newPassword);
     setNewUserType(newUserType);
 
-    axios.post(`${server}/user/create`, {
+    axios.post('http://localhost:8080/user/create', {
         name: newUserName,
         email: newEmail,
         password: newPassword,
@@ -56,7 +55,7 @@ export default function App() {
   }
 
   function authenticateUser(authUseremail, authPassword) {  
-    axios.post(`${server}/user/authenticateUser`, {
+    axios.post('http://localhost:8080/user/authenticateUser', {
         email: authUseremail,
         password: authPassword
     })
