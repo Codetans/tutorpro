@@ -30,7 +30,9 @@ const SelectedQuiz = () => {
     // http://localhost:8080/assessment/questions 
     useEffect(() => {
 		async function fetchData() {
-			const response = await axios.get(`http://localhost:8080/assessment/1/questions`)
+			const response = await axios.post(`http://localhost:8080/assessment/questions`, {
+				"assessmentID": 1,
+			})
 			console.log(response)
 			console.log(response.data)
 			setQuestionList(response.data);
