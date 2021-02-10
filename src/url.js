@@ -1,1 +1,1 @@
-export default URL = 'http://localhost:8080'
+export default URL = 'http://ec2-18-144-64-85.us-west-1.compute.amazonaws.com:8080/'
