@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import classes from '../stylesheets/quizstyle.css';
-import { Container, Row, Col } from 'reactstrap';
+import URL from './url.js'
 
 const SelectedQuiz = () => {
 
@@ -27,10 +26,9 @@ const SelectedQuiz = () => {
 
 	const [questionList, setQuestionList] = useState([]);
 
-    // http://localhost:8080/assessment/questions 
     useEffect(() => {
 		async function fetchData() {
-			const response = await axios.post(`http://localhost:8080/assessment/questions`, {
+			const response = await axios.post(`${URL}/assessment/questions`, {
 				"assessmentID": 1,
 			})
 			console.log(response)
