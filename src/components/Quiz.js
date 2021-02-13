@@ -27,7 +27,7 @@ const Quiz = (props) => {
                     <CardImg top width="100%" src={img} alt="Math Calculator" />
                     <br />
                     <CardText>This quiz will assess your understanding of multiplication factors </CardText>
-                    <Button color="info" tag="a" href="#" action onClick={() => {props.changeMode("selectedQuiz")}}>Take this quiz</Button>
+                    <Button color="info" tag="a" href="#" onClick={() => {props.changeMode("selectedQuiz")}}>Take this quiz</Button>
                 </Card>
             </Col>
             <Col sm="4">
@@ -37,7 +37,7 @@ const Quiz = (props) => {
                     <CardImg top width="100%" src={img2} alt="Science" />                    
                     <br />
                     <CardText>Take this quiz to gain a better understand of Biology</CardText>
-                    <Button color="info" tag="a" href="#" action onClick={() => {props.changeMode("selectedQuiz")}}>Take this quiz</Button>
+                    <Button color="info" tag="a" href="#" onClick={() => {props.changeMode("selectedQuiz")}}>Take this quiz</Button>
                 </Card>
             </Col>
             <Col sm="4">
@@ -47,7 +47,7 @@ const Quiz = (props) => {
                     <CardImg top width="100%" src={img3} alt="English" />
                     <br />
                     <CardText>This quiz is intended to assess your reading comprehension skils</CardText>
-                    <Button color="info" tag="a" href="#" action onClick={() => {props.changeMode("selectedQuiz")}}>Take this quiz</Button>
+                    <Button color="info" tag="a" href="#" onClick={() => {props.changeMode("selectedQuiz")}}>Take this quiz</Button>
                 </Card>
             </Col>
             </Row>
