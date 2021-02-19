@@ -4,21 +4,13 @@ import img from './assets/calculator.jpg'
 import img2 from './assets/science.jpg'
 import img3 from './assets/english.jpg'
 
-const styles = {
-    container: {
-        backgroundColor: 'rgb(220,220,220)',
-        height: '95%'
-    },
-    Jumbotron: {
-        height: '100%'
-    }
-  }
+  // we need to abstract this class. Quiz titles and other info from DB.
 
 const Quiz = (props) => {
 
     return (
-        <Container style={styles.container}>
-            <Jumbotron style={styles.Jumbotron}>
+        <div>
+            <Jumbotron className="jumbotron">
             <Row>
             <Col sm="4">
                 <Card>
@@ -52,7 +44,7 @@ const Quiz = (props) => {
             </Col>
             </Row>
             </Jumbotron>
-        </Container>
+        </div>
     );
 }
 
