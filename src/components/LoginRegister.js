@@ -23,7 +23,7 @@ const LoginRegistration = (props) => {
     }
 
     return (
-        <div className="auth-wrapper">
+        <div className="auth-wrapper centerContainer">
             <div className="auth-inner">
                 {props.badUserNameOrPassword ? 
                     <Alert color="danger">
