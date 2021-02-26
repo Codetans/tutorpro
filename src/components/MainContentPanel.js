@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from 'reactstrap';
 import SelectedQuiz from './SelectedQuiz';
 import Profile from './Profile';
-import Quiz from './Quiz';
+import QuizList from './QuizList';
 import Welcome from './Welcome';
 
 const MainContentPanel = (props) => {
@@ -10,7 +10,7 @@ const MainContentPanel = (props) => {
       <div className="dashContentContainer pullLeft">
         {props.mode === "" && <Welcome userName={props.userName}/>}
         {props.mode === "welcome" && <Welcome userName={props.userName}/>}
-        {props.mode === "quiz" && <Quiz changeMode={props.changeMode}/>}
+        {props.mode === "quiz" && <QuizList changeMode={props.changeMode}/>}
         {props.mode === "profile" && <Profile userName={props.userName} userEmail={props.userEmail}/>}
         {props.mode === "selectedQuiz" && <SelectedQuiz/>}
     </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import Quiz from './Quiz'
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Container } from 'reactstrap';
 
