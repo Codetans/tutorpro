@@ -8,10 +8,10 @@
 body {
   width: 100%;
   height: 100%;
-  min-height: 34vw;
-  min-width: 45vw;
   font-weight: 400;
   font-family: 'Fira Sans', sans-serif;
+  background: #f9f8f4;
+
 }
 h1,h2,h3,h4,h5,h6,label,span {
   font-weight: 500;
@@ -35,8 +35,10 @@ h1,h2,h3,h4,h5,h6,label,span {
 .page_header {
   display: flex;
   justify-content: space-between;
-  background: #dcdcdc;
-  padding: .2vw;
+  align-content: baseline;
+  height: 5vw;
+  padding: .3vw;
+  border-bottom:.09vw solid darkgray;
 }
 /* ============================================
                     dashboard
@@ -44,38 +46,101 @@ h1,h2,h3,h4,h5,h6,label,span {
 .dashBoard{
   display: flex;
   justify-content: space-between;
-  margin-top: 1vw;
+  margin: .3vw;
+  padding: .3vw;
 }
 /* ============================================
                     sideNav
  ============================================ */
 .sideNav{
   padding: .3vw;
-  max-width: 15%;
-  background: #dcdcdc;
+  margin: .3vw;
+  width: 15%;
+  background: whitesmoke;
+  a{
+    border:.09vw solid darkgray;;
+  }
 }
 /* ============================================
                     dashContentContainer
  ============================================ */
 .dashContentContainer{
-  width: 85%;
-  height: 100%;
-  background: #dcdcdc;
+  padding: .3vw;
+  margin: .3vw;
+  width: 100%;
 }
 /* ============================================
                     Badge
  ============================================ */
 .badge{
-  height: 2.5vw;
+  height: 3vw;
   font-size: 1.5vw;
-  align-content: baseline;
 }
 /* ============================================
                     quizFrame
  ============================================ */
 .quizFrame{
-  width: 100%;
+  display: flex;
+  padding: 3vw;
+  flex-direction: column;
+  align-content: space-between;
 }
+/* ============================================
+                    questionStateStatus
+ ============================================ */
+.questionStateStatus{
+  display: flex;
+  justify-content: space-between;
+  padding: .3vw;
+}
+/* ============================================
+                    questionFrame
+ ============================================ */
+.questionFrame{
+  padding: 1vw;
+}
+/* ============================================
+                    questionDescription
+ ============================================ */
+.questionDescription{
+  display: flex;
+  margin: .5vw;
+  padding: .5vw;
+  justify-content: space-between;
+}
+/* ============================================
+                    resourceFrame
+ ============================================ */
+.resourceFrame{
+}
+/* ============================================
+                    answersFrame
+ ============================================ */
+.answersFrame{
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  margin:.5vw;
+  padding:.5vw;
+}
+/* ============================================
+                    answer
+ ============================================ */
+.answer{
+  width: 50%;
+  margin: .5vw;
+  padding: .3vw;
+}
+/* ============================================
+                    questionNavigation
+ ============================================ */
+.questionNavigation{
+  margin: .5vw;
+  display: flex;
+  justify-content: space-between;
+  padding: .3vw;
+}
+
 /* ============================================
                     jumbotron
  ============================================ */
@@ -138,15 +203,42 @@ h1,h2,h3,h4,h5,h6,label,span {
   justify-content: center;
   align-items: center;
 }
+.custom-control-label {
+  font-weight: 400;
+}
+.flex{
+  display:flex;
+}
+.flexContainer-45w-34h-3p{
+  display: flex;
+  min-width: 45vw;
+  min-height: 34vw;
+  padding: 3vw;
+}
+.flexRow{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.marg{
+  margin: .3vw;
+}
 .marginLeft{
   margin-left: 1vw;
 }
 .marginRight{
   margin-right: 1vw;
 }
-.custom-control-label {
-  font-weight: 400;
+.boxShadow{
+  box-shadow: .1vw .1vw black, .2vw .2vw gray, .3vw .3vw #dadada;
 }
+.pad{
+  padding: .3vw;
+}
+.solidBorder{
+  border:.09vw solid darkgray;
+}
+
 //div {
 //  border-style: solid;
 //}

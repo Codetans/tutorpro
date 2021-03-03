@@ -6,19 +6,21 @@ function SelectedQuiz() {
 
 	const [questionList, setQuestionList] = useState([]);
 
-	// http://localhost:8080/assessment/questions 
+	//http://localhost:8080/assessment/questions
 	useEffect(() => {
 		async function fetchData() {
 			const response = await axios.post(`http://localhost:8080/assessment/questions`, {
 				"assessmentID": 1,
 			})
 				.then(response => {
-					console.log(response.data)
 					setQuestionList(response.data)
 				})
 		}
 		fetchData();
 	}, []);
+
+	//console.log(questionList);
+
 	//if [], run once when SelectedQuiz loads, and don't run again
 	return (
 		<div>
