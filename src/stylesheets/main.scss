@@ -194,6 +194,22 @@ h1,h2,h3,h4,h5,h6,label,span {
   color: #167bff;
 }
 /* ============================================
+        ------- QuestionForm -------
+ ============================================ */
+#form-section{
+  display: flex;
+  flex-direction: column;
+  label{
+    font-weight: bold;
+  }
+  input{
+    width: 85%;
+  }
+  .input-sm{
+    width: 20%;
+  }
+}
+/* ============================================
         ------- Utility Classes -------
  ============================================ */
 .centerContainer-min-wid-height{
