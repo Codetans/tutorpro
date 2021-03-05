@@ -93,15 +93,6 @@ public class AssessmentService {
         }
     }
 
-    public void createAssessmentToStudentId() {
-        try {
-            assessmentToStudentID = assessmentToStudentsRepository.assessmentToStudentIDMax();
-            assessmentToStudentID+=1;
-        } catch(Exception e) {
-            assessmentToStudentId+=1;
-        }
-    }
-
     public void deleteAssessment(int asssessmentId) {
         assessmentRepository.deleteById(asssessmentId);
     }
