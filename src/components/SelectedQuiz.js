@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import QuizQuestions from './QuizQuestions'
+//import QuizQuestions from './QuizQuestions'
+import SetupQuiz from './SetupQuiz'
+
 
 function SelectedQuiz() {
 
@@ -24,7 +26,7 @@ function SelectedQuiz() {
 	//if [], run once when SelectedQuiz loads, and don't run again
 	return (
 		<div>
-			{questionList && <QuizQuestions questionList={questionList} />}
+			{questionList && <SetupQuiz questionList={questionList} />}
 		</div>
 	)
 }

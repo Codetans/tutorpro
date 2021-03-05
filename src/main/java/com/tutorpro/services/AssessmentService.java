@@ -19,12 +19,17 @@ public class AssessmentService {
     AssessmentToQuestionsRepository assessmentToQuestionsRepository;
     @Autowired
     QuestionRepository questionRepository;
+    @Autowired
+    AssessmentToStudentsRepository assessmentToStudentsRepository;
 
     Assessment assessment = new Assessment();
     AssessmentToQuestions assessmentToQuestions = new AssessmentToQuestions();
     int asssessmentId = 0;
     int questionId = 0;
     int assessmentToQuestionsId = 0;
+
+    AssessmentToStudents AssessmentToStudents = new AssessmentToStudents();
+    int assessmentToStudentID = 0;
 
     public List<Assessment> getStudentAssessments(int studentId) {
         return assessmentRepository.studentAssessments(studentId);
@@ -85,6 +90,15 @@ public class AssessmentService {
             assessmentToQuestionsId+=1;
         } catch(Exception e) {
             assessmentToQuestionsId+=1;
+        }
+    }
+
+    public void createAssessmentToStudentId() {
+        try {
+            assessmentToStudentID = assessmentToStudentsRepository.assessmentToStudentIDMax();
+            assessmentToStudentID+=1;
+        } catch(Exception e) {
+            assessmentToStudentId+=1;
         }
     }
 
