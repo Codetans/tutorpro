@@ -33,20 +33,24 @@ function QuizQuestions({ questionList }) {
 	};
 
 	const previousQuestion = () => {
-		// console.log("The answer held in answer " + 0 + " is " + answers[0])
-		// console.log("The answer held in answer " + 1 + " is " + answers[1])
-		// console.log("The answer held in answer " + 2 + " is " + answers[2])
+		console.log(`the answer held by ${answers[currentQuestion]}`);
 		currentQuestion--;
 		if (currentQuestion >= 0) {
 			setCurrentQuestion(currentQuestion);
 		} 
 	};
 
-	function handleInput(answer, questionNumber) {
-		if(answer) {
-			// console.log("Updating the stored question " + questionNumber + " to be " + answer.target.value)
-			answers[questionNumber] = answer.target.value
+	function handleInput(selectedAnswer) {
+		if(selectedAnswer) {
+			//console.log("Updating the stored question to be " + selectedAnswer)
+			answers[currentQuestion] = selectedAnswer;
 		}
+	}
+
+	function onSubmit(){
+		// for each Answer in Answers
+			// questionList[answerIndex].questoinID
+			// compare questionList.answer vs answers.answer
 	}
 
 	return (
@@ -55,7 +59,7 @@ function QuizQuestions({ questionList }) {
 				<h3 className='solidBorder pad boxShadow'>Subject, Assessment</h3>
 				<h3 className='solidBorder pad boxShadow'>Question Number</h3>
 			</div>
-			{question ? <Question question={question}/> : <div>...loading</div>}
+			 {question ? <Question handleInput={handleInput} question={question}/> : <div>...loading</div>}
 			<div className='questionNavigation'>
 				<div className='boxShadow solidBorder'>
 					{/* <Row><button onClick={()=> previousQuestion()}>Previous</button><button onClick={()=> nextQuestion()}>Next</button></Row> */}

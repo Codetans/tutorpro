@@ -13,7 +13,7 @@ const Header = (props) =>  {
       <>
           <div className="page_header">
                 <div>
-                    <Badge class="badge" color="secondary">TutorPro</Badge>
+                    <Badge className="badge" color="secondary">TutorPro</Badge>
                 </div>
                 <div>
                     <ButtonGroup className="marginRight badge">
