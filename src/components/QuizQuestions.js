@@ -26,7 +26,7 @@ function QuizQuestions(props) {
 	};
 
 	const previousQuestion = () => {
-		console.log(`the answer held by ${answers[currentQuestion]}`);
+		// console.log(`the answer held by ${answers[currentQuestion]}`);
 		currentQuestion--;
 		if (currentQuestion >= 0) {
 			setCurrentQuestion(currentQuestion);
@@ -48,7 +48,8 @@ function QuizQuestions(props) {
 				x += 1;
 			}
 		}	
-		{props.setScoreData(x, answers.length)}
+		{props.setScoreData(x, props.questionList.length)}
+		answers = [];
 		{props.changeMode("showScore")}
 	}
 		return (
@@ -57,14 +58,14 @@ function QuizQuestions(props) {
 							<h3 className='solidBorder pad boxShadow'>Subject, Assessment</h3>
 							<h3 className='solidBorder pad boxShadow'>Question: {currentQuestion + 1}</h3>
 						</div>
-							{question ? <Question handleInput={handleInput} question={question}/> : <div>...loading</div>}
+							{question ? <Question handleInput={handleInput}
+								question={question} answers={answers} currentQuestion={currentQuestion}/> : <div>...loading</div>}
 						<div className='questionNavigation'>
 							<div className='boxShadow solidBorder'>
-								{/* <Row><button onClick={()=> previousQuestion()}>Previous</button><button onClick={()=> nextQuestion()}>Next</button></Row> */}
 								{(currentQuestion > 0) ? (<button onClick={()=> previousQuestion()}>Previous</button>) : null}
 								{(currentQuestion < props.questionList.length-1) ? (<button onClick={()=> nextQuestion()}>Next</button>) : null}
 							</div>
-							{(answers.length == props.questionList.length) ? <div className='boxShadow solidBorder'><button onClick={()=> {onSubmit()}}>Submit</button></div> : null}
+							{<div className='boxShadow solidBorder'><button onClick={()=> {onSubmit()}}>Submit</button></div>}
 						</div>	
 				</div>
 		);	
