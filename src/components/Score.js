@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'; 
 
-function Score({score, answers}) {
+function Score(props) {
     
     return (  
         <div>
-            <p> {score} / {answers.length} </p>
+            <h1>Score Component</h1>
+            <p> {props.score} / {props.quizLength} </p>
         </div>
     )  
 }

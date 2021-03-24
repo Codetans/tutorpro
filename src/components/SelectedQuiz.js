@@ -4,7 +4,7 @@ import QuizQuestions from './QuizQuestions'
 // import SetupQuiz from './SetupQuiz'
 
 
-function SelectedQuiz() {
+function SelectedQuiz(props) {
 
 	const [questionList, setQuestionList] = useState([]);
 
@@ -26,7 +26,7 @@ function SelectedQuiz() {
 	//if [], run once when SelectedQuiz loads, and don't run again
 	return (
 		<div>
-			{questionList && <QuizQuestions questionList={questionList} />}
+			{questionList && <QuizQuestions questionList={questionList} changeMode={props.changeMode} setScoreData={props.setScoreData}/>}
 		</div>
 	)
 }
