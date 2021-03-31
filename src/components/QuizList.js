@@ -6,7 +6,7 @@ import img3 from './assets/english.jpg'
 
   // we need to abstract this class. Quiz titles and other info from DB.
 
-const Quiz = (props) => {
+const QuizList = (props) => {
 
     return (
         <div>
@@ -48,4 +48,4 @@ const Quiz = (props) => {
     );
 }
 
-export default Quiz;
+export default QuizList;

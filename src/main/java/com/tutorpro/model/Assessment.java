@@ -9,7 +9,6 @@ public class Assessment {
     private String name;
     private String description;
     private String subject;
-    private int studentID;
     private String photoName;
 
     public Integer getAssessmentID() {
@@ -38,13 +37,6 @@ public class Assessment {
     }
     public void setSubject(String subject) {
         this.subject = subject;
-    }
-
-    public Integer getStudentID() {
-        return studentID;
-    }
-    public void setStudentID(Integer studentID) {
-        this.studentID = studentID;
     }
 
     public String getPhotoName() {

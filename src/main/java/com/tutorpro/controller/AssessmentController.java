@@ -3,10 +3,10 @@ package com.tutorpro.controller;
 import com.tutorpro.model.Assessment;
 import com.tutorpro.model.Question;
 import com.tutorpro.services.AssessmentService;
+import com.tutorpro.model.AssessmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
@@ -15,12 +15,16 @@ import java.util.List;
 public class AssessmentController {
     @Autowired
     AssessmentService assessmentService;
+    @Autowired
+    AssessmentRepository assessmentRepository;
 
-    @PostMapping(path="/getStudentAssessments", produces = "application/json")
+    @GetMapping(path="/getStudentAssessments", produces = "application/json")
     public @ResponseBody
-    Object getStudentAssessments(@RequestBody Assessment assessment) {
-        return assessmentService.getStudentAssessments(assessment.getStudentID());
+    List<Assessment> getStudentAssessments(@RequestParam int studentID) {
+        return assessmentRepository.studentAssessments(studentID);
     }
+
+
 
     @PostMapping(path="/questions", produces = "application/json")
     public @ResponseBody
@@ -28,4 +32,7 @@ public class AssessmentController {
         List<Question> questions = assessmentService.getAssessmentQuestions(assessment.getAssessmentID());
         return questions;
     }
+
+
+
 }

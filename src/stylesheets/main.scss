@@ -1,71 +1,200 @@
-/* === Start: App.css === */
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.PageHeading
-{
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color :black !important;
-}
-/* === End: app.css === */
-
-/* === Start: index.css === */
+/* ============================================
+                    index.css
+ ============================================ */
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
-
 * {
   box-sizing: border-box;
 }
+
+html{
+  //background-image: linear-gradient(to bottom right, #ffecd2 , #fcb69f);
+  background-image: linear-gradient(to bottom right, #667eea , #764ba2);
+      //background-image: linear-gradient(to bottom right, #ffecd2 , #fcb69f);
+  background-repeat:no-repeat;
+  height:100%;
+}
 body {
-  min-height: 100vh;
-  display: flex;
+
+
+  background-image: linear-gradient(to bottom right,#fffaf2 , #ffe6de);
+  max-width: 1300px;
+  min-width: 900px;
+  min-height: 95%;
+  margin:auto;
+  margin-top: 50px;
+  margin-bottom:50px;
   font-weight: 400;
   font-family: 'Fira Sans', sans-serif;
 }
-
 h1,h2,h3,h4,h5,h6,label,span {
   font-weight: 500;
   font-family: 'Fira Sans', sans-serif;
 }
+/* ============================================
+                    root
+ ============================================ */
+.root{
+}
+/* ============================================
+                  mainContainer
+ ============================================ */
+.mainContainer{
+  margin: .3vw;
+  padding: .3vw;
+}
+/* ============================================
+                    page_header
+ ============================================ */
+.page_header {
+  display: flex;
+  justify-content: space-between;
+  align-content: baseline;
+  height: 5.7vw;
+  padding: .3vw;
+  border-bottom:.09vw solid darkgray;
+}
+/* ============================================
+                    dashboard
+ ============================================ */
+.dashBoard{
+  display: flex;
+  justify-content: space-between;
+  margin: .3vw;
+  padding: .3vw;
+}
+/* ============================================
+                    sideNav
+ ============================================ */
+.sideNav{
+  padding: .3vw;
+  margin: .3vw;
+  width: 15%;
+  background: whitesmoke;
+  a{
+    border:.09vw solid darkgray;;
+  }
+}
+/* ============================================
+                    dashContentContainer
+ ============================================ */
+.dashContentContainer{
+  padding: .3vw;
+  margin: .3vw;
+  width: 100%;
+}
+/* ============================================
+                    Badge
+ ============================================ */
+.badge.badge-secondary{
+  height: 4.5vw;
+  font-size: 3vw;
+    background-color:purple;
+    //margin-bottom:25px;
+    margin-left:.5vw;
+}
+/* ============================================
+                    quizFrame
+ ============================================ */
+.quizFrame{
+  display: flex;
+  padding: 3vw;
+  flex-direction: column;
+  align-content: space-between;
+}
+/* ============================================
+                    questionStateStatus
+ ============================================ */
+.questionStateStatus{
+  display: flex;
+  justify-content: space-between;
+  padding: .3vw;
+}
+/* ============================================
+                    questionFrame
+ ============================================ */
+.questionFrame{
+  padding: 1vw;
+}
+/* ============================================
+                    questionDescription
+ ============================================ */
+.questionDescription{
+  display: flex;
+  margin: .5vw;
+  padding: .5vw;
+  justify-content: space-between;
+}
+/* ============================================
+                    resourceFrame
+ ============================================ */
+.resourceFrame{
+}
+/* ============================================
+                    answersFrame
+ ============================================ */
+.answersFrame{
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  margin:.5vw;
+  padding:.5vw;
+}
+/* ============================================
+                    answer
+ ============================================ */
+.answer{
+  width: 50%;
+  margin: .5vw;
+  padding: .3vw;
+}
+/* ============================================
+                    questionNavigation
+ ============================================ */
+.questionNavigation{
+  margin: .5vw;
+  display: flex;
+  justify-content: space-between;
+  padding: .3vw;
+}
 
-body, html, .App, #root, .auth-wrapper {
+
+
+/* ============================================
+            button
+ ============================================ */
+.btn.btn-primary, .btn.btn-info,.div.boxShadow.solidBorder  {
+  //background-image: linear-gradient(to bottom right, #667eea , #764ba2);
+  background-color:#667eea;
+}
+
+.btn.btn-secondary,.btn-primary {
+  height:2.5vw;
+  font-size:1vw;
+  margin-top:.7vw;
+}
+
+/* ============================================
+                    jumbotron
+ ============================================ */
+.jumbotron{
+  width: 100%;
+  height: 100%;
+  //padding: .3vw;
+}
+/* ============================================
+        ------- login -------
+ ============================================ */
+.auth-wrapper {
   width: 100%;
   height: 100%;
 }
-
 .auth-wrapper {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: left;
+  align-content: center;
 }
-
 .auth-inner {
   width: 450px;
   margin: auto;
@@ -75,23 +204,16 @@ body, html, .App, #root, .auth-wrapper {
   border-radius: 5px;
   transition: all .3s;
 }
-
 .auth-wrapper .form-control:focus {
   border-color: #167bff;
   box-shadow: none;
 }
-
 .auth-wrapper h3 {
   text-align: center;
   margin: 0;
   line-height: 1;
   padding-bottom: 20px;
 }
-
-.custom-control-label {
-  font-weight: 400;
-}
-
 .forgot-password,
 .forgot-password a {
   text-align: right;
@@ -100,54 +222,113 @@ body, html, .App, #root, .auth-wrapper {
   color: #7f7d7d;
   margin: 0;
 }
-
 .forgot-password a {
   color: #167bff;
 }
-/* === End: index.css === */
-
-/* === Start: dashboard.css === */
-/*
-div {
-border-style: solid;
+/* ============================================
+        ------- QuestionForm -------
+ ============================================ */
+#form-section{
+  display: flex;
+  flex-direction: column;
+  label{
+    font-weight: bold;
+  }
+  input{
+    width: 85%;
+  }
+  .input-sm{
+    width: 20%;
+  }
 }
-*/
-header,
-main,
-footer {
-    padding-left: 240px;
-    background: #f5f5f5;
+/* ============================================
+        ------- Utility Classes -------
+ ============================================ */
+.centerContainer-min-wid-height{
+  display:flex;
+  min-height: 34vw;
+  min-width: 45vw;
+  justify-content: center;
+  align-items: center;
+}
+.custom-control-label {
+  font-weight: 400;
+}
+.flex{
+  display:flex;
+}
+.flexContainer-45w-34h-3p{
+  display: flex;
+  min-width: 45vw;
+  min-height: 34vw;
+  padding: 3vw;
+}
+.flexRow{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.marg{
+  margin: .3vw;
+}
+.marginLeft{
+  margin-left: 1vw;
+}
+.marginRight{
+  margin-right: 1vw;
+}
+.boxShadow{
+  box-shadow: .1vw .1vw black, .2vw .2vw gray, .3vw .3vw #dadada;
+}
+.pad{
+  padding: .3vw;
+}
+.solidBorder{
+  border:.09vw solid darkgray;
 }
 
-#dash_header, #dash_footer{
-    max-width: 90%;
-    justify-content: center;
-    align-content: center;
-    background: #f5f5f5;
-}
+//div {
+//  border-style: solid;
+//}
+//header,
+//main,
+//footer {
+//  padding-left: 240px;
+//  background: #f5f5f5;
+//}
 
-#dash_side_nav {
-    max-width: 20%;
-    background: #f5f5f5;
-}
+//#dash_header, #dash_footer{
+//  max-width: 90%;
+//  justify-content: center;
+//  align-content: center;
+//  background: #f5f5f5;
+//}
 
-#dash_main_content {
-    max-width: 90%;
-    justify-content: center;
-    align-content: center;
-}
-
-#dash_side_nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    border-style: solid;
-    overflow: auto;
-
-    li a {
-        text-decoration: none;
-        display: block;
-        border-style: solid;
-        max-width: 100%;
-    }
-}
+//#dash_side_nav {
+//  max-width: 20%;
+//  background: #f5f5f5;
+//}
+//
+//#dash_main_content {
+//  max-width: 90%;
+//  justify-content: center;
+//  align-content: center;
+//}
+//
+//#dash_side_nav ul {
+//  list-style-type: none;
+//  margin: 0;
+//  padding: 0;
+//  border-style: solid;
+//  overflow: auto;
+//
+//  li a {
+//    text-decoration: none;
+//    display: block;
+//    border-style: solid;
+//    max-width: 100%;
+//  }
+//}
+///* === Start: index.css === */
+//
+///* === End: index.css === */

@@ -5,10 +5,11 @@ import Dashboard from './components/Dashboard';
 import axios from 'axios';
 import LoginRegistration from './components/LoginRegister';
 import { useEffect } from 'react';
+import Header from "./components/Header";
 
 require.context('./stylesheets/', true, /\.(css|scss)$/i)
 
-export default function App() { 
+export default function App() {
   const [userEmail, setUserEmail] = useState('');
   const [userName, setUserName] = useState('');
   const [userType, setUserType] = useState('');
@@ -85,7 +86,7 @@ export default function App() {
   }
 
   return (
-    <div className="App">
+    <div className="mainContainer">
       {isAuthenticated ? <Dashboard userName={userName} userEmail={userEmail} userType={userType} logOut={logOut}/> : <LoginRegistration authenticateUser={authenticateUser} createUser={createUser} badUserNameOrPassword={badUserNameOrPassword} userAlreadyExists={userAlreadyExists} userCreatedSuccessfully={userCreatedSuccessfully} />}
     </div>
   );

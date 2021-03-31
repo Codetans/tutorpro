@@ -1,29 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from 'reactstrap';
 import SelectedQuiz from './SelectedQuiz';
 import Profile from './Profile';
-import Quiz from './Quiz';
+import QuizList from './QuizList';
 import Welcome from './Welcome';
-
-const styles = {
-  container: {
-      backgroundColor: 'rgb(220,220,220)',
-      height: '95%'
-  },
-  Jumbotron: {
-      height: '100%'
-  }
-}
+import Score from './Score';
 
 const MainContentPanel = (props) => {
+
+  const [score, setScore] = useState(0);
+  const [quizLength, setQuizLength] = useState(0);
+  
+  function setScoreData(score, quizLength) {
+    setScore(score);
+    setQuizLength(quizLength);
+  }
+
   return (
-    <Container style={styles.container}>
+      <div className="dashContentContainer pullLeft">
         {props.mode === "" && <Welcome userName={props.userName}/>}
         {props.mode === "welcome" && <Welcome userName={props.userName}/>}
-        {props.mode === "quiz" && <Quiz changeMode={props.changeMode}/>}
+        {props.mode === "quiz" && <QuizList changeMode={props.changeMode}/>}
         {props.mode === "profile" && <Profile userName={props.userName} userEmail={props.userEmail}/>}
-        {props.mode === "selectedQuiz" && <SelectedQuiz/>}
-    </Container>
+        {props.mode === "selectedQuiz" && <SelectedQuiz changeMode={props.changeMode} setScoreData={setScoreData}/>}
+        {props.mode === "showScore" && <Score score={score} quizLength={quizLength}/>}
+    </div>
   );
 }
 

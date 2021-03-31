@@ -1,26 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Badge } from 'reactstrap'
-import { Container, Row, Col } from 'reactstrap';
+import { Badge, ButtonGroup, Modal, ModalBody, ModalFooter, ModalHeader, CardImg } from 'reactstrap'
 import { Button } from 'reactstrap';
+import About from "./About";
+import logo_pic from "./assets/tutorpro_logo.png"
 
-const styles = {
-  container: {
-      backgroundColor: 'rgb(220,220,220)',
-      height: '80%'
-  }
-}
 
-const Header = (props) =>  {
-  return (
-    <Container fluid style={styles.container}>
-      <Row className="h-100">
-          <Col xs = "3" className="align-self-center"><h1 className="h-100 float-left"><Badge color="secondary">TutorPro</Badge></h1></Col>
-          <Col xs = "7"></Col>
-          <Col xs = "2" className="align-self-center"><Button color="primary" onClick={props.logOut}>Log Out</Button></Col>
-      </Row>
-    </Container>
-  );
+const Header = (props) => {
+
+    const [modal, setModal] = useState(false);
+    const toggle = () => setModal(!modal);
+
+    return (
+        <>
+            <div className="page_header">
+                <div>
+                    {/* <CardImg top width="10%" src={logo_pic} alt="TutorPro Logo" /> */}
+
+                    <Badge className="badge" color="secondary">TutorPro</Badge>
+                </div>
+                <div>
+                    <ButtonGroup className="marginRight badge">
+                        <Button onClick={toggle}>About</Button>
+                        <Modal isOpen={modal} toggle={toggle} className="modal-lg">
+                            <ModalHeader toggle={toggle}>About</ModalHeader>
+                            <ModalBody>
+                                <About />
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="secondary" onClick={toggle}>Cancel</Button>
+                            </ModalFooter>
+                        </Modal>
+                        <Button>Contact</Button>
+                        <Button>Help</Button>
+                    </ButtonGroup>
+                    <Button color="primary" onClick={props.logOut}>Log Out</Button>
+                </div>
+            </div>
+        </>
+    );
 }
 
 export default Header
