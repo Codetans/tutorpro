@@ -1,18 +1,22 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Badge, ButtonGroup, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap'
+import { Badge, ButtonGroup, Modal, ModalBody, ModalFooter, ModalHeader, CardImg } from 'reactstrap'
 import { Button } from 'reactstrap';
 import About from "./About";
+import logo_pic from "./assets/tutorpro_logo.png"
 
-const Header = (props) =>  {
+
+const Header = (props) => {
 
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
 
-  return (
-      <>
-          <div className="page_header">
+    return (
+        <>
+            <div className="page_header">
                 <div>
+                    {/* <CardImg top width="10%" src={logo_pic} alt="TutorPro Logo" /> */}
+
                     <Badge className="badge" color="secondary">TutorPro</Badge>
                 </div>
                 <div>
@@ -32,9 +36,9 @@ const Header = (props) =>  {
                     </ButtonGroup>
                     <Button color="primary" onClick={props.logOut}>Log Out</Button>
                 </div>
-          </div>
-      </>
-  );
+            </div>
+        </>
+    );
 }
 
 export default Header

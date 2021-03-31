@@ -9,8 +9,9 @@ import java.util.List;
 
 @Repository
 public interface AssessmentRepository extends CrudRepository<Assessment, Integer> {
-    @Query(value = "select * from assessment a join student s on a.studentID = s.studentID WHERE a.studentID = :studentID", nativeQuery = true)
+    @Query(value = "SELECT a.assessmentid, a.subject, a.description, a.name, a.photo_name FROM assessment a JOIN assessment_to_students ats ON ats.assessmentid = a.assessmentid WHERE ats.studentid = :studentID", nativeQuery = true)
     public List<Assessment> studentAssessments(@Param("studentID") int studentID);
+
 
     @Query(value = "SELECT max(assessmentID) FROM assessment", nativeQuery = true)
     public int assessmentIdMax();

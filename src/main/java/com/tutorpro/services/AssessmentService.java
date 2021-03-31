@@ -15,8 +15,8 @@ import java.util.List;
 public class AssessmentService {
     @Autowired
     AssessmentRepository assessmentRepository;
-    @Autowired
-    AssessmentToQuestionsRepository assessmentToQuestionsRepository;
+    // @Autowired
+    // AssessmentToQuestionsRepository assessmentToQuestionsRepository;
     @Autowired
     QuestionRepository questionRepository;
     @Autowired
@@ -40,24 +40,23 @@ public class AssessmentService {
         return questions;
     }
 
-    public String createAssessment(Assessment newAssessment, ArrayList<Question> assessmentQuestions) {
-        int newAssessmentId = createAssessmentId();
-        assessment.setAssessmentID(newAssessmentId);
-        assessment.setStudentID(newAssessment.getStudentID());
-        assessment.setSubject(newAssessment.getSubject());
-        assessment.setName(newAssessment.getName());
-        assessment.setDescription(newAssessment.getDescription());
-        assessmentRepository.save(assessment);
-        for (Question newQuestion : assessmentQuestions) {
-            questionRepository.save(newQuestion);
-            createAssessmentToQuestionId();
-            assessmentToQuestions.setAssessmentToQuestionID(getAsssessmentId());
-            assessmentToQuestions.setAssessmentID(newAssessmentId);
-            assessmentToQuestions.setQuestionID(newQuestion.getQuestionId());
-            assessmentToQuestionsRepository.save(assessmentToQuestions);
-        }
-        return "Assessment created successfully";
-    }
+    // public String createAssessment(Assessment newAssessment, ArrayList<Question> assessmentQuestions) {
+    //     int newAssessmentId = createAssessmentId();
+    //     assessment.setAssessmentID(newAssessmentId);
+    //     assessment.setSubject(newAssessment.getSubject());
+    //     assessment.setName(newAssessment.getName());
+    //     assessment.setDescription(newAssessment.getDescription());
+    //     assessmentRepository.save(assessment);
+    //     for (Question newQuestion : assessmentQuestions) {
+    //         questionRepository.save(newQuestion);
+    //         createAssessmentToQuestionId();
+    //         assessmentToQuestions.setAssessmentToQuestionID(getAsssessmentId());
+    //         assessmentToQuestions.setAssessmentID(newAssessmentId);
+    //         assessmentToQuestions.setQuestionID(newQuestion.getQuestionId());
+    //         assessmentToQuestionsRepository.save(assessmentToQuestions);
+    //     }
+    //     return "Assessment created successfully";
+    // }
 
     public int createAssessmentId() {
         try {
@@ -84,14 +83,14 @@ public class AssessmentService {
         return questionId;
     }
 
-    public void createAssessmentToQuestionId() {
-        try {
-            assessmentToQuestionsId = assessmentToQuestionsRepository.assessmentToQuestionIdMax();
-            assessmentToQuestionsId+=1;
-        } catch(Exception e) {
-            assessmentToQuestionsId+=1;
-        }
-    }
+    // public void createAssessmentToQuestionId() {
+    //     try {
+    //         assessmentToQuestionsId = assessmentToQuestionsRepository.assessmentToQuestionIdMax();
+    //         assessmentToQuestionsId+=1;
+    //     } catch(Exception e) {
+    //         assessmentToQuestionsId+=1;
+    //     }
+    // }
 
     public void deleteAssessment(int asssessmentId) {
         assessmentRepository.deleteById(asssessmentId);
@@ -101,7 +100,7 @@ public class AssessmentService {
         questionRepository.deleteById(questionId);
     }
 
-    public void deleteAssessmentToQuestion() {
-        assessmentToQuestionsRepository.deleteById(assessmentToQuestionsId);
-    }
+    // public void deleteAssessmentToQuestion() {
+    //     assessmentToQuestionsRepository.deleteById(assessmentToQuestionsId);
+    // }
 }
