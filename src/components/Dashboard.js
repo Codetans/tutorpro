@@ -17,7 +17,7 @@ const DashBoard = (props) => {
         <Header logOut={props.logOut}/>
         <div className="dashBoard">
             <SideNav changeMode={changeMode} userType={props.userType}/>
-            <MainContentPanel userName={props.userName} userEmail={props.userEmail} mode={mode} changeMode={changeMode}/>
+            <MainContentPanel userId={props.userId} userName={props.userName} userEmail={props.userEmail} mode={mode} changeMode={changeMode}/>
         </div>
     </>
   )

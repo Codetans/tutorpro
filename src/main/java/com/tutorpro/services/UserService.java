@@ -84,6 +84,7 @@ public class UserService {
                 mainUserInfo.put("userEmail", user.getEmail());
                 mainUserInfo.put("userName", user.getName());
                 mainUserInfo.put("userType", user.getUserType());
+                mainUserInfo.put("userId", user.getId());
                 return mainUserInfo;
             } else {
                 return "Username or password is incorrect";

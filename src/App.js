@@ -21,6 +21,7 @@ export default function App() {
   const [badUserNameOrPassword, setBadUserNameOrPassword] = useState(false);
   const [userAlreadyExists, setUserAlreadyExists] = useState(false);
   const [userCreatedSuccessfully, setUserCreatedSuccessfully] = useState(false);
+  const [userId, setUserId] = useState(0);
 
   useEffect(() => {
     if(localStorage.getItem("token") === "t") {
@@ -28,6 +29,7 @@ export default function App() {
       setUserName(localStorage.getItem("user"));
       setUserType(localStorage.getItem("type"));
       setUserEmail(localStorage.getItem("email"));
+      setUserId(localStorage.getItem("id"));
     }
   }, [userName, userType]);
 
@@ -63,6 +65,7 @@ export default function App() {
     .then(res => {
         if (res.data.userEmail === authUseremail) {
             setBadUserNameOrPassword(false);
+            setUserId(res.data.userId);
             setUserEmail(authUseremail);
             setUserName(res.data.userName);
             setUserType(res.data.userType);
@@ -71,6 +74,7 @@ export default function App() {
             localStorage.setItem("user", res.data.userName);
             localStorage.setItem("type", res.data.userType);
             localStorage.setItem("email", res.data.userEmail);
+            localStorage.setItem("id", res.data.userId);
         } else {
             setBadUserNameOrPassword(true);
             setUserCreatedSuccessfully(false);
@@ -87,7 +91,7 @@ export default function App() {
 
   return (
     <div className="mainContainer">
-      {isAuthenticated ? <Dashboard userName={userName} userEmail={userEmail} userType={userType} logOut={logOut}/> : <LoginRegistration authenticateUser={authenticateUser} createUser={createUser} badUserNameOrPassword={badUserNameOrPassword} userAlreadyExists={userAlreadyExists} userCreatedSuccessfully={userCreatedSuccessfully} />}
+      {isAuthenticated ? <Dashboard userId={userId} userName={userName} userEmail={userEmail} userType={userType} logOut={logOut}/> : <LoginRegistration authenticateUser={authenticateUser} createUser={createUser} badUserNameOrPassword={badUserNameOrPassword} userAlreadyExists={userAlreadyExists} userCreatedSuccessfully={userCreatedSuccessfully} />}
     </div>
   );
 }
