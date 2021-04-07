@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import QuizQuestions from './QuizQuestions'
-// import SetupQuiz from './SetupQuiz'
-
 
 function SelectedQuiz(props) {
 

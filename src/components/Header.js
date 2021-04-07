@@ -4,7 +4,7 @@ import { Badge, ButtonGroup, Modal, ModalBody, ModalFooter, ModalHeader, CardImg
 import { Button } from 'reactstrap';
 import About from "./About";
 import logo_pic from "./assets/tutorpro_logo.png"
-
+import "../stylesheets/headerstyle.css"
 
 const Header = (props) => {
 
@@ -15,9 +15,7 @@ const Header = (props) => {
         <>
             <div className="page_header">
                 <div>
-                    {/* <CardImg top width="10%" src={logo_pic} alt="TutorPro Logo" /> */}
-
-                    <Badge className="badge" color="secondary">TutorPro</Badge>
+                    <CardImg top width="10%" className="photo" src={logo_pic} alt="TutorPro Logo" />
                 </div>
                 <div>
                     <ButtonGroup className="marginRight badge">
