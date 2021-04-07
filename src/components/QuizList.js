@@ -8,9 +8,7 @@ import img3 from './assets/english.jpg'
 
 const QuizList = (props) => {
 
-    useEffect(() => {
-		console.log(props.assessmentList);
-	},);
+    useEffect(() => { },);
 
     return (
         <div className="">
@@ -24,7 +22,7 @@ const QuizList = (props) => {
                                 <CardImg top width="100%" src={assessment.photo_name} />
                                 <br />
                                 <CardText>{assessment.description}</CardText>
-                                <Button color="info" tag="a" href="#" onClick={() => {props.changeMode("selectedQuiz")}}>Take this quiz</Button>
+                                <Button color="info" tag="a" href="#" onClick={() => {props.setSelectedQuiz(assessment.assessmentID)}}>Take this quiz</Button>
                             </Card>
                         </div>
                     )) 

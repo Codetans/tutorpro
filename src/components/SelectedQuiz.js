@@ -12,7 +12,7 @@ function SelectedQuiz(props) {
 	useEffect(() => {
 		async function fetchData() {
 			const response = await axios.post(`http://localhost:8080/assessment/questions`, {
-				"assessmentID": 1, //make this dynamic
+				"assessmentID": props.quizId
 			})
 				.then(response => {
 					setQuestionList(response.data)
@@ -20,8 +20,6 @@ function SelectedQuiz(props) {
 		}
 		fetchData();
 	}, []);
-
-	//console.log(questionList);
 
 	//if [], run once when SelectedQuiz loads, and don't run again
 	return (

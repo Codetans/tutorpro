@@ -15,9 +15,6 @@ function QuizQuestions(props) {
 	},);
 
 	const nextQuestion = () => {
-		// console.log("The answer held in answer " + 0 + " is " + answers[0])
-		// console.log("The answer held in answer " + 1 + " is " + answers[1])
-		// console.log("The answer held in answer " + 2 + " is " + answers[2])
 		currentQuestion++;
 		if (currentQuestion <= props.questionList.length) {
 			setCurrentQuestion(currentQuestion);
@@ -26,7 +23,6 @@ function QuizQuestions(props) {
 	};
 
 	const previousQuestion = () => {
-		// console.log(`the answer held by ${answers[currentQuestion]}`);
 		currentQuestion--;
 		if (currentQuestion >= 0) {
 			setCurrentQuestion(currentQuestion);
@@ -35,7 +31,6 @@ function QuizQuestions(props) {
 
 	function handleInput(selectedAnswer) {
 		if(selectedAnswer) {
-			//console.log("Updating the stored question to be " + selectedAnswer)
 			answers[currentQuestion] = selectedAnswer;
 		}
 	}

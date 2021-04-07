@@ -46,7 +46,6 @@ export default function App() {
         userType: newUserType
     })
     .then(res => {
-        console.log(res);
         if(res.data === "User created successfully") {
           setUserAlreadyExists(false);
           setUserCreatedSuccessfully(true);
@@ -84,7 +83,6 @@ export default function App() {
   }
 
   function logOut() {
-    console.log("inside the logOut function");
     setIsAuthenticated(false);
     localStorage.removeItem("token");
   }

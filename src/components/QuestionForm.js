@@ -36,7 +36,6 @@ function QuestionForm() {
         } : {...question},
         validationSchema,
         onSubmit(values) {
-            //console.log(values)
             fetch('', {
                 method: "POST",
                 headers: {
