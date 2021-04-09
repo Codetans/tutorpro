@@ -11,7 +11,8 @@ const SideNav = (props) =>  {
                 {(props.userType !== "student") ? (<ListGroupItem tag="a" href="#" action>My Students</ListGroupItem>) : (null)}
                 <ListGroupItem tag="a" href="#" action onClick={() => {props.changeMode("quiz")}}>Take Quiz</ListGroupItem>
                 <ListGroupItem tag="a" href="#" action>Tutorials</ListGroupItem>
-                {(props.userType !== "student") ? (<ListGroupItem tag="a" href="#" action>Create Quiz</ListGroupItem>) : (null)}
+                {(props.userType !== "student") ? (
+                    <ListGroupItem tag="a" href="#" action onClick={() => {props.changeMode("createquiz")}}>Create Quiz</ListGroupItem>) : (null)}
                 <ListGroupItem tag="a" href="#" action>Resources</ListGroupItem>
                 <ListGroupItem tag="a" href="#" action>Find a Tutor</ListGroupItem>
             </ListGroup>

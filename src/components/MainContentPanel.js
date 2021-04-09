@@ -6,6 +6,7 @@ import QuizList from './QuizList';
 import Welcome from './Welcome';
 import Score from './Score';
 import axios from 'axios';
+import CreateQuizForm from './CreateQuizForm';
 
 const MainContentPanel = (props) => {
 
@@ -44,6 +45,7 @@ const MainContentPanel = (props) => {
         {props.mode === "profile" && <Profile userName={props.userName} userEmail={props.userEmail}/>}
         {props.mode === "selectedQuiz" && <SelectedQuiz changeMode={props.changeMode} setScoreData={setScoreData} quizId={quizId}/>}
         {props.mode === "showScore" && <Score score={score} quizLength={quizLength}/>}
+        {props.mode === "createquiz" && <CreateQuizForm userName={props.userName} />}
     </div>
   );
 }
