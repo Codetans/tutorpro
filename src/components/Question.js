@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 function Question(props) {
+
+    const shuffleSeed = 5;
+
     let q = {
         questionId: props.question.questionId,
         question: props.question.question,
@@ -12,7 +15,7 @@ function Question(props) {
     }
 
     let shuffleAnswers = [q.answer, q.incorrectAnswer1, q.incorrectAnswer2,q.incorrectAnswer3]
-    shuffleAnswers = shuffleAnswers.sort(() => {return q.questionId - 5})
+    shuffleAnswers = shuffleAnswers.sort(() => {return q.questionId - shuffleSeed})
 
     useEffect(() => {
         shuffleAnswers.forEach((element) => {
