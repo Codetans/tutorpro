@@ -287,6 +287,16 @@ h1,h2,h3,h4,h5,h6,label,span {
   border:.09vw solid darkgray;
 }
 
+/* ============================================
+        ------- Score -------
+ ============================================ */
+
+ .scoreBoard h5, .scoreBoard img, .scoreBoard h1 {
+    display: block;
+    margin: auto;
+    text-align: center;
+ }
+
 //div {
 //  border-style: solid;
 //}
