@@ -5,11 +5,16 @@ import { Button } from 'reactstrap';
 import About from "./About";
 import logo_pic from "./assets/tutorpro_logo.png"
 import "../stylesheets/headerstyle.css"
+import Help from './Help';
 
 const Header = (props) => {
 
-    const [modal, setModal] = useState(false);
-    const toggle = () => setModal(!modal);
+    const [showAboutModal, setShowAboutModal] = useState(false);
+    const toggleShowAbout = () => setShowAboutModal(!showAboutModal);
+    const [showContactModal, setShowContactModal] = useState(false);
+    const toggleShowContact = () => setShowContactModal(!showContactModal);
+    const [showHelpModal, setShowHelpModal] = useState(false);
+    const toggleShowHelp = () => setShowHelpModal(!showHelpModal);
 
     return (
         <>
@@ -19,18 +24,36 @@ const Header = (props) => {
                 </div>
                 <div>
                     <ButtonGroup className="marginRight badge">
-                        <Button onClick={toggle}>About</Button>
-                        <Modal isOpen={modal} toggle={toggle} className="modal-lg">
-                            <ModalHeader toggle={toggle}>About</ModalHeader>
+                        <Button onClick={toggleShowAbout}>About</Button>
+                        <Modal isOpen={showAboutModal} toggle={toggleShowAbout} className="modal-lg">
+                            <ModalHeader toggle={toggleShowAbout}>About</ModalHeader>
                             <ModalBody>
                                 <About />
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="secondary" onClick={toggle}>Cancel</Button>
+                                <Button color="secondary" onClick={toggleShowAbout}>Cancel</Button>
                             </ModalFooter>
                         </Modal>
-                        <Button>Contact</Button>
-                        <Button>Help</Button>
+                        <Button onClick={toggleShowContact}>Contact</Button>
+                        <Modal isOpen={showContactModal} toggle={toggleShowContact} className="modal-lg">
+                            <ModalHeader toggle={toggleShowContact}>Contact</ModalHeader>
+                            <ModalBody>
+                                <p>Hi this is the contact info page</p>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="secondary" onClick={toggleShowContact}>Cancel</Button>
+                            </ModalFooter>
+                        </Modal>
+                        <Button onClick={toggleShowHelp}>Help</Button>
+                        <Modal isOpen={showHelpModal} toggle={toggleShowHelp} className="modal-lg">
+                            <ModalHeader toggle={toggleShowHelp}>Help</ModalHeader>
+                            <ModalBody>
+                                <Help />
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="secondary" onClick={toggleShowHelp}>Cancel</Button>
+                            </ModalFooter>
+                        </Modal>
                     </ButtonGroup>
                     <Button color="primary" onClick={props.logOut}>Log Out</Button>
                 </div>
