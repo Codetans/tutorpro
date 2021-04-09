@@ -1,25 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import * as yup from 'yup';
-import {useFormik} from 'formik'
-import {toast} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 
 export function VHelp({message}) {
     return <p className="help">{message}</p>
 }
-
-const validationSchema = yup.object({
-    question: yup.string().required(),
-    answer: yup.string().required(),
-    incorrect_answer1: yup.string().required(),
-    incorrect_answer2: yup.string().required(),
-    incorrect_answer3: yup.string().required(),
-    grade_level: yup.string().required(),
-    subject_id: yup.string().required(),
-    reference: yup.string().required(),
-    subject: yup.string().required()
-})
 
 function CreateQuizForm() {
 

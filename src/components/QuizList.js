@@ -13,15 +13,15 @@ const QuizList = (props) => {
 
     return (
         <div className="">
-            <Jumbotron className="jumbotron">
-                {
-                    props.assessmentList.map((assessment, index) => (
+            {props.assessmentList.length > 0 ?
+                <Jumbotron className="jumbotron"> 
+                    {props.assessmentList.map((assessment, index) => (
                         <div key={index}>
                             <Quiz assessment={assessment} setSelectedQuiz={props.setSelectedQuiz}></Quiz>
                         </div>
-                    )) 
-                }
-            </Jumbotron>
+                    ))}
+                </Jumbotron> : <div><h4>You don't have any quizzes to take at this time.</h4></div>
+            }
         </div>
     );
 }
