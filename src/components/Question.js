@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function Question(props) {
 
-    let shuffleSeed = 5;
+    const shuffleSeed = 5;
 
     let q = {
         questionId: props.question.questionId,
