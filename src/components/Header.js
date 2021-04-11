@@ -31,7 +31,7 @@ const Header = (props) => {
                                 <About />
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="secondary" onClick={toggleShowAbout}>Cancel</Button>
+                                <Button color="secondary" onClick={toggleShowAbout}>Close</Button>
                             </ModalFooter>
                         </Modal>
                         <Button onClick={toggleShowContact}>Contact</Button>
@@ -41,7 +41,7 @@ const Header = (props) => {
                                 <p>Hi this is the contact info page</p>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="secondary" onClick={toggleShowContact}>Cancel</Button>
+                                <Button color="secondary" onClick={toggleShowContact}>Close</Button>
                             </ModalFooter>
                         </Modal>
                         <Button onClick={toggleShowHelp}>Help</Button>
@@ -51,7 +51,7 @@ const Header = (props) => {
                                 <Help />
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="secondary" onClick={toggleShowHelp}>Cancel</Button>
+                                <Button color="secondary" onClick={toggleShowHelp}>Close</Button>
                             </ModalFooter>
                         </Modal>
                     </ButtonGroup>

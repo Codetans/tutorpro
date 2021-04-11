@@ -22,7 +22,11 @@ function SelectedQuiz(props) {
 	//if [], run once when SelectedQuiz loads, and don't run again
 	return (
 		<div>
-			{questionList && <QuizQuestions questionList={questionList} changeMode={props.changeMode} setScoreData={props.setScoreData}/>}
+			{questionList && <QuizQuestions
+								questionList={questionList}
+								changeMode={props.changeMode}
+								setScoreData={props.setScoreData}
+								quizName={props.quizName}/>}
 		</div>
 	)
 }

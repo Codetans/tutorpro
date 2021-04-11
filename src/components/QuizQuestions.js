@@ -50,7 +50,7 @@ function QuizQuestions(props) {
 		return (
 				<div className='quizFrame'>
 						<div className='questionStateStatus'>
-							<h3 className='solidBorder pad boxShadow'>Subject, Assessment</h3>
+							<h3 className='solidBorder pad boxShadow'>{props.quizName}</h3>
 							<h3 className='solidBorder pad boxShadow'>Question: {currentQuestion + 1}</h3>
 						</div>
 							{question ? <Question handleInput={handleInput}

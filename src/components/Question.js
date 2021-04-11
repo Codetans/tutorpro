@@ -46,36 +46,18 @@ function Question(props) {
                     </div>
                 </div>
                 <div className='answersFrame'>
-                    <div className='flexRow'>
-                        <div className='answer boxShadow solidBorder'>
-                            <button onClick={answerSelected}
-                                    value={shuffleAnswers[0]}
-                                    id={0}>
-                                {shuffleAnswers[0]}
-                            </button>
-                        </div>
-                        <div className='answer boxShadow solidBorder'>
-                            <button onClick={answerSelected}
-                                    value={shuffleAnswers[1]}
-                                    id={1}>
-                                {shuffleAnswers[1]}
-                            </button>
-                        </div>
-                    </div>
-                    <div className='flexRow'>
-                        <div className='answer boxShadow solidBorder'>
-                            <button onClick={answerSelected}
-                                    value={shuffleAnswers[2]}
-                                    id={2}>
-                                {shuffleAnswers[2]}
-                            </button>
-                        </div>
-                        <div className='answer boxShadow solidBorder'>
-                            <button onClick={answerSelected} 
-                                    value={shuffleAnswers[3]}
-                                    id={3}>
-                                {shuffleAnswers[3]}
-                            </button>
+                    <div className="Container">
+                        <div className="row">
+                            {shuffleAnswers.map((answer, index) => (
+                                <div key={index} className="col-md-6">
+                                    <button onClick={answerSelected}
+                                        value={answer}
+                                        id={index}
+                                        className="answer-button-styles">
+                                        {answer}
+                                    </button>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
