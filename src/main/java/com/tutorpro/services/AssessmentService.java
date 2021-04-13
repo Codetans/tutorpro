@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.net.PortUnreachableException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -21,6 +19,8 @@ public class AssessmentService {
     QuestionRepository questionRepository;
     @Autowired
     AssessmentToStudentsRepository assessmentToStudentsRepository;
+    @Autowired
+    AnswersRepository answersRepository;
 
     Assessment assessment = new Assessment();
     AssessmentToQuestions assessmentToQuestions = new AssessmentToQuestions();
@@ -35,9 +35,16 @@ public class AssessmentService {
         return assessmentRepository.studentAssessments(studentId);
     }
 
-    public List<Question> getAssessmentQuestions(int assessmentId) {
+    public List<QuestionWithAnswers> getAssessmentQuestions(int assessmentId) {
         List<Question> questions = questionRepository.assessmentQuestions(assessmentId);
-        return questions;
+        List<QuestionWithAnswers> questionWithAnswers = new ArrayList<>();
+        for (Question question : questions) {
+            List<Answers> answers = answersRepository.questionAnswers(question.getQuestionId());
+            QuestionWithAnswers questionWithAnswer = new QuestionWithAnswers(question.getQuestionId(), question.getGradeLevel(),
+                    question.getQuestion(), question.getSubject(), question.getReference(), answers);
+            questionWithAnswers.add(questionWithAnswer);
+        }
+        return questionWithAnswers;
     }
 
     // public String createAssessment(Assessment newAssessment, ArrayList<Question> assessmentQuestions) {

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Question from "./Question";
-import Score from "./Score";
 
 var answers = [];
 
@@ -8,25 +7,18 @@ function QuizQuestions(props) {
 
 	var [currentQuestion, setCurrentQuestion] = useState(0);
 
-	let [question, setQuestion] = useState(props.questionList[currentQuestion]);
-
-	useEffect(() => {
-		setQuestion(props.questionList[currentQuestion]);
-	},);
-
 	const nextQuestion = () => {
 		currentQuestion++;
 		if (currentQuestion <= props.questionList.length) {
 			setCurrentQuestion(currentQuestion);
-			setQuestion(currentQuestion);
-		} 
+		}
 	};
 
 	const previousQuestion = () => {
 		currentQuestion--;
 		if (currentQuestion >= 0) {
 			setCurrentQuestion(currentQuestion);
-		} 
+		}
 	};
 
 	function handleInput(selectedAnswer) {
@@ -39,9 +31,14 @@ function QuizQuestions(props) {
 		let x = 0;
 
 		for (let i = 0; i < answers.length; i++){
-			if (props.questionList[i].answer == answers[i]){
-				x += 1;
-			}
+			props.questionList[i].answers.forEach(element => {
+				if(element.correct) {
+					if(element.answer === answers[i]) {
+						x += 1;
+					}
+				}
+			});
+		
 		}	
 		{props.setScoreData(x, props.questionList.length)}
 		answers = [];
@@ -53,8 +50,8 @@ function QuizQuestions(props) {
 							<h3 className='solidBorder pad boxShadow'>{props.quizName}</h3>
 							<h3 className='solidBorder pad boxShadow'>Question: {currentQuestion + 1}</h3>
 						</div>
-							{question ? <Question handleInput={handleInput}
-								question={question} answers={answers} currentQuestion={currentQuestion}/> : <div>...loading</div>}
+							{props.questionList[currentQuestion] ? <Question handleInput={handleInput}
+								question={props.questionList[currentQuestion]} answers={answers} currentQuestion={currentQuestion}/> : <div>...loading</div>}
 						<div className='questionNavigation'>
 							<div className='boxShadow solidBorder'>
 								{(currentQuestion > 0) ? (<button onClick={()=> previousQuestion()}>Previous</button>) : null}

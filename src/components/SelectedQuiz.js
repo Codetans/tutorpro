@@ -9,9 +9,7 @@ function SelectedQuiz(props) {
 	//http://localhost:8080/assessment/questions
 	useEffect(() => {
 		async function fetchData() {
-			const response = await axios.post(`http://localhost:8080/assessment/questions`, {
-				"assessmentID": props.quizId
-			})
+			const response = await axios.get(`http://localhost:8080/assessment/questions?assessmentId=${props.quizId}`)
 				.then(response => {
 					setQuestionList(response.data)
 				})

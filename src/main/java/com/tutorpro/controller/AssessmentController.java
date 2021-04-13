@@ -2,6 +2,7 @@ package com.tutorpro.controller;
 
 import com.tutorpro.model.Assessment;
 import com.tutorpro.model.Question;
+import com.tutorpro.model.QuestionWithAnswers;
 import com.tutorpro.services.AssessmentService;
 import com.tutorpro.model.AssessmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,10 @@ public class AssessmentController {
         return assessmentRepository.studentAssessments(studentID);
     }
 
-
-
-    @PostMapping(path="/questions", produces = "application/json")
+    @GetMapping(path="/questions", produces = "application/json")
     public @ResponseBody
-    List<Question> getAssessmentQuestions(@RequestBody Assessment assessment) {
-        List<Question> questions = assessmentService.getAssessmentQuestions(assessment.getAssessmentID());
+    List<QuestionWithAnswers> getAssessmentQuestions(@RequestParam int assessmentId) {
+        List<QuestionWithAnswers> questions = assessmentService.getAssessmentQuestions(assessmentId);
         return questions;
     }
 

@@ -13,20 +13,15 @@ public class QuestionController {
     private QuestionRepository questionRepository;
     Question question = new Question();
 
-    @PostMapping(path="/createQuestion")
+    @PostMapping(path = "/createQuestion")
     @ResponseBody
-    public String createQuestion (@RequestBody Question newQuestion) {
+    public String createQuestion(@RequestBody Question newQuestion) {
         question.setQuestionId(newQuestion.getQuestionId());
         question.setGradeLevel(newQuestion.getGradeLevel());
         question.setQuestion(newQuestion.getQuestion());
-        question.setAnswer(newQuestion.getAnswer());
-        question.setIncorrectAnswer1(newQuestion.getIncorrectAnswer1());
-        question.setIncorrectAnswer2(newQuestion.getIncorrectAnswer2());
-        question.setIncorrectAnswer3(newQuestion.getIncorrectAnswer3());
         question.setSubject(newQuestion.getSubject());
         question.setReference(newQuestion.getReference());
         questionRepository.save(question);
         return "Saved";
-    }}
-
-
+    }
+}
