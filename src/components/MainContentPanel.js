@@ -15,6 +15,7 @@ const MainContentPanel = (props) => {
   const [assessmentList, setAssessmentList] = useState([]);
   const [quizId, setQuizId] = useState(0);
   const [quizName, setQuizName] = useState('');
+  const [allQuestions, setAllQuestions] = useState([]);
   
   function setScoreData(score, quizLength) {
     setScore(score);
@@ -29,10 +30,15 @@ const MainContentPanel = (props) => {
 
   useEffect(() => {
 		async function fetchData() {
-			await axios.get(`http://localhost:8080/assessment/getStudentAssessments?studentID=${props.userId}`, {
-			})
+			await axios.get(`http://localhost:8080/assessment/getStudentAssessments?studentID=${props.userId}`)
 				.then(response => {
 					setAssessmentList(response.data);
+				})
+
+        await axios.get(`http://localhost:8080/question/getAllQuestions`)
+				.then(questions => {
+          // console.log(questions.data)
+					setAllQuestions(questions.data)
 				})
 		}
 		fetchData();
@@ -46,7 +52,7 @@ const MainContentPanel = (props) => {
         {props.mode === "profile" && <Profile userName={props.userName} userEmail={props.userEmail}/>}
         {props.mode === "selectedQuiz" && <SelectedQuiz changeMode={props.changeMode} setScoreData={setScoreData} quizId={quizId} quizName={quizName}/>}
         {props.mode === "showScore" && <Score score={score} quizLength={quizLength}/>}
-        {props.mode === "createquiz" && <CreateQuizForm userName={props.userName} />}
+        {props.mode === "createquiz" && <CreateQuizForm userName={props.userName} questions={allQuestions}/>}
     </div>
   );
 }

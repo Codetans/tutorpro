@@ -5,11 +5,15 @@ export function VHelp({message}) {
     return <p className="help">{message}</p>
 }
 
-function CreateQuizForm() {
+function CreateQuizForm(props) {
 
     const [isOpen, setIsOpen] = useState(false);
 
     let toggle = () => setIsOpen(!isOpen);
+
+    useEffect(() => {
+        console.log(props.questions)
+    })
 
     let saveQuestion = () => {
         //Assessment.java model --- assessment object

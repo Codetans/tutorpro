@@ -5,6 +5,7 @@ import QuizQuestions from './QuizQuestions'
 function SelectedQuiz(props) {
 
 	const [questionList, setQuestionList] = useState([]);
+	const [allQuestions, setAllQuestions] = useState([]);
 
 	//http://localhost:8080/assessment/questions
 	useEffect(() => {
