@@ -1,6 +1,5 @@
 package com.tutorpro.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionWithAnswers {

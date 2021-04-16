@@ -47,24 +47,6 @@ public class AssessmentService {
         return questionWithAnswers;
     }
 
-    // public String createAssessment(Assessment newAssessment, ArrayList<Question> assessmentQuestions) {
-    //     int newAssessmentId = createAssessmentId();
-    //     assessment.setAssessmentID(newAssessmentId);
-    //     assessment.setSubject(newAssessment.getSubject());
-    //     assessment.setName(newAssessment.getName());
-    //     assessment.setDescription(newAssessment.getDescription());
-    //     assessmentRepository.save(assessment);
-    //     for (Question newQuestion : assessmentQuestions) {
-    //         questionRepository.save(newQuestion);
-    //         createAssessmentToQuestionId();
-    //         assessmentToQuestions.setAssessmentToQuestionID(getAsssessmentId());
-    //         assessmentToQuestions.setAssessmentID(newAssessmentId);
-    //         assessmentToQuestions.setQuestionID(newQuestion.getQuestionId());
-    //         assessmentToQuestionsRepository.save(assessmentToQuestions);
-    //     }
-    //     return "Assessment created successfully";
-    // }
-
     public int createAssessmentId() {
         try {
             asssessmentId = assessmentRepository.assessmentIdMax();
@@ -110,4 +92,17 @@ public class AssessmentService {
     // public void deleteAssessmentToQuestion() {
     //     assessmentToQuestionsRepository.deleteById(assessmentToQuestionsId);
     // }
+
+//    public createQuiz(AssessmentWithQuestion assessmentWithQuestion) {
+//        int newAssessmentId = createAssessmentId();
+//         assessment.setAssessmentID(newAssessmentId);
+//         assessment.setSubject(AssessmentWithQuestion.getSubject());
+//         assessment.setName(AssessmentWithQuestion.getName());
+//         assessment.setDescription(AssessmentWithQuestion.getDescription());
+//         assessmentRepository.save(assessment);
+//         for(assessmentWithQuestions assessmentWithQuestions : assessmentWithQuestion) {
+//             assessmentToQuestions.setQuestionID(assessmentWithQuestion.getQuestionId);
+//             assessmentToQuestionsRepo.save(assessmentToQuestions)
+//         }
+//    }
 }

@@ -1,7 +1,6 @@
 package com.tutorpro.controller;
 
 import com.tutorpro.model.Assessment;
-import com.tutorpro.model.Question;
 import com.tutorpro.model.QuestionWithAnswers;
 import com.tutorpro.services.AssessmentService;
 import com.tutorpro.model.AssessmentRepository;
@@ -32,6 +31,11 @@ public class AssessmentController {
         return questions;
     }
 
+    @PostMapping(path="/create")
+    public @ResponseBody
+    String createAssessment(@RequestBody QuestionWithAnswers questionWithAnswers) {
 
+        return "success";
+    }
 
 }
