@@ -13,12 +13,10 @@ import java.util.List;
 public class AssessmentService {
     @Autowired
     AssessmentRepository assessmentRepository;
-    // @Autowired
-    // AssessmentToQuestionsRepository assessmentToQuestionsRepository;
+    @Autowired
+    AssessmentToQuestionsRepository assessmentToQuestionsRepository;
     @Autowired
     QuestionRepository questionRepository;
-    @Autowired
-    AssessmentToStudentsRepository assessmentToStudentsRepository;
     @Autowired
     AnswersRepository answersRepository;
 
@@ -26,10 +24,7 @@ public class AssessmentService {
     AssessmentToQuestions assessmentToQuestions = new AssessmentToQuestions();
     int asssessmentId = 0;
     int questionId = 0;
-    int assessmentToQuestionsId = 0;
-
-    AssessmentToStudents AssessmentToStudents = new AssessmentToStudents();
-    int assessmentToStudentID = 0;
+    int assessmentToQuestionId = 0;
 
     public List<Assessment> getStudentAssessments(int studentId) {
         return assessmentRepository.studentAssessments(studentId);
@@ -58,10 +53,6 @@ public class AssessmentService {
         return asssessmentId;
     }
 
-    public int getAsssessmentId() {
-        return asssessmentId;
-    }
-
     public int createQuestionId() {
         try {
             questionId = questionRepository.questionIdMax();
@@ -72,14 +63,16 @@ public class AssessmentService {
         return questionId;
     }
 
-    // public void createAssessmentToQuestionId() {
-    //     try {
-    //         assessmentToQuestionsId = assessmentToQuestionsRepository.assessmentToQuestionIdMax();
-    //         assessmentToQuestionsId+=1;
-    //     } catch(Exception e) {
-    //         assessmentToQuestionsId+=1;
-    //     }
-    // }
+    public int createAssessmentToQuestionId() {
+        try {
+            assessmentToQuestionId = assessmentToQuestionsRepository.assessmentToQuestionIdMax();
+            assessmentToQuestionId+=1;
+        } catch(Exception e) {
+            assessmentToQuestionId+=1;
+        }
+
+        return assessmentToQuestionId;
+    }
 
     public void deleteAssessment(int asssessmentId) {
         assessmentRepository.deleteById(asssessmentId);
@@ -93,16 +86,28 @@ public class AssessmentService {
     //     assessmentToQuestionsRepository.deleteById(assessmentToQuestionsId);
     // }
 
-//    public createQuiz(AssessmentWithQuestion assessmentWithQuestion) {
-//        int newAssessmentId = createAssessmentId();
-//         assessment.setAssessmentID(newAssessmentId);
-//         assessment.setSubject(AssessmentWithQuestion.getSubject());
-//         assessment.setName(AssessmentWithQuestion.getName());
-//         assessment.setDescription(AssessmentWithQuestion.getDescription());
-//         assessmentRepository.save(assessment);
-//         for(assessmentWithQuestions assessmentWithQuestions : assessmentWithQuestion) {
-//             assessmentToQuestions.setQuestionID(assessmentWithQuestion.getQuestionId);
-//             assessmentToQuestionsRepo.save(assessmentToQuestions)
-//         }
-//    }
+    public String createQuiz(AssessmentWithQuestion assessmentWithQuestion) {
+        int newAssessmentId = createAssessmentId();
+        assessment.setAssessmentID(newAssessmentId);
+        assessment.setName(assessmentWithQuestion.getName());
+        assessment.setDescription(assessmentWithQuestion.getDescription());
+        assessment.setSubject(assessmentWithQuestion.getSubject());
+        if (assessmentWithQuestion.getSubject().toLowerCase().equals("math")) {
+            assessment.setPhotoName("calculator.jpg");
+        } else if (assessmentWithQuestion.getSubject().toLowerCase().equals("science")) {
+            assessment.setPhotoName("science.jpg");
+        } else if (assessmentWithQuestion.getSubject().toLowerCase().equals("english")) {
+            assessment.setPhotoName("english.jpg");
+        }
+        assessmentRepository.save(assessment);
+
+        List<Integer> questionIds = assessmentWithQuestion.getQuestionIds();
+         for(Integer questionId : questionIds) {
+             assessmentToQuestions.setAssessmentToQuestionID(createAssessmentToQuestionId());
+             assessmentToQuestions.setAssessmentID(newAssessmentId);
+             assessmentToQuestions.setQuestionID(questionId);
+             assessmentToQuestionsRepository.save(assessmentToQuestions);
+         }
+         return "Quiz created successfully";
+    }
 }

@@ -21,19 +21,24 @@ function CreateQuizForm(props) {
     let saveQuestion = (e) => {
         e.preventDefault();
         console.log(name)
-        console.log(subject)
         console.log(description)
+        console.log(subject)
         console.log(questions)
         
-        // axios.post('http://localhost:8080/assessment/create', {
-        // name: newUserName,
-        // subject: subject,
-        // description: description,
-        // questions: questions
-        // })
-        // .then(res => {
-            
-        // })
+        axios.post('http://localhost:8080/assessment/create', {
+        name: name,
+        description: description,
+        subject: subject,
+        questionIds: questions
+        })
+        .then(res => {
+            console.log(res.data)
+            if(res.data === 'Quiz created successfully') {
+                alert('The quiz was saved successfully');
+            } else {
+                alert('There was a problem saving the quiz');
+            }
+        })
     }
 
     return (
@@ -46,16 +51,16 @@ function CreateQuizForm(props) {
                     <input type='text' name='name' onChange={(e) => setName(e.target.value)} required/>
                 </div>
                 <div>
+                    <label htmlFor='description'>Assessment Description</label>
+                    <input type='text' name='description' onChange={(e) => setDescription(e.target.value)}/>
+                </div>
+                <div>
                     <label htmlFor='subject'>Subject</label>
                     <select onChange={(e) => setSubject(e.target.value)}>
                         <option value="math">Math</option>
                         <option value="science">Science</option>
                         <option value="english">English</option>
                     </select>
-                </div>
-                <div>
-                    <label htmlFor='description'>Assessment Description</label>
-                    <input type='text' name='description' onChange={(e) => setDescription(e.target.value)}/>
                 </div>
                 <p>Question 1</p>
                 <div id='wrapper'>
