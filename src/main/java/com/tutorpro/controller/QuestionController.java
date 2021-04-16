@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @CrossOrigin(origins = "*")
 @RequestMapping(path="question")
@@ -23,5 +25,11 @@ public class QuestionController {
         question.setReference(newQuestion.getReference());
         questionRepository.save(question);
         return "Saved";
+    }
+
+    @GetMapping(path = "/getAllQuestions")
+    @ResponseBody
+    public List<Question> getAllQuestions() {
+        return questionRepository.findAll();
     }
 }

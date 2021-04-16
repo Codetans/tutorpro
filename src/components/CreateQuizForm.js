@@ -5,11 +5,15 @@ export function VHelp({message}) {
     return <p className="help">{message}</p>
 }
 
-function CreateQuizForm() {
+function CreateQuizForm(props) {
 
     const [isOpen, setIsOpen] = useState(false);
 
     let toggle = () => setIsOpen(!isOpen);
+
+    useEffect(() => {
+        console.log(props.questions)
+    })
 
     let saveQuestion = () => {
         //Assessment.java model --- assessment object
@@ -46,12 +50,62 @@ function CreateQuizForm() {
             </div>
         </div>
         <div>
-            <Collapse isOpen ={isOpen}>
-                <p>Question data goes here</p>
-                <button>save question to quiz</button>
+            <Collapse isOpen ={!isOpen}>
+                <p>Question 1</p>
+                <div id='wrapper'>
+                    <select>
+                    {
+                        props.questions.map((question, index) => {
+                            return(<option key={index} value={question.questionid}>{question.question}</option>)
+                        })
+                    }
+                    </select>
+                </div>
+                <p>Question 2</p>
+                <div id='wrapper'>
+                    <select>
+                    {
+                        props.questions.map((question, index) => {
+                            return(<option key={index} value={question.questionid}>{question.question}</option>)
+                        })
+                    }
+                    </select>
+                </div>
+                <p>Question 3</p>
+                <div id='wrapper'>
+                    <select>
+                    {
+                        props.questions.map((question, index) => {
+                            return(<option key={index} value={question.questionid}>{question.question}</option>)
+                        })
+                    }
+                    </select>
+                </div>
+                <p>Question 4</p>
+                <div id='wrapper'>
+                    <select>
+                    {
+                        props.questions.map((question, index) => {
+                            return(<option key={index} value={question.questionid}>{question.question}</option>)
+                        })
+                    }
+                    </select>
+                </div>
+                <p>Question 5</p>
+                <div id='wrapper'>
+                    <select>
+                    {
+                        props.questions.map((question, index) => {
+                            return(<option key={index} value={question.questionid}>{question.question}</option>)
+                        })
+                    }
+                    </select>
+                </div>
+                {/*<button onClick={saveQuestion}>add question to quiz</button>*/}
+                {/*<button onClick={createQuiz}>create quiz</button>*/}
             </Collapse>
-            <label htmlFor='addQuestion'>Question Name</label>
-            <Button onClick = {toggle}>Add Question</Button>
+            <label htmlFor='addQuestion'></label>
+            <Button onClick={toggle}>Save Quiz</Button>
         </div>
     </>
     );
