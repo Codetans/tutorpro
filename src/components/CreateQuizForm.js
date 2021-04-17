@@ -34,7 +34,8 @@ function CreateQuizForm(props) {
         .then(res => {
             console.log(res.data)
             if(res.data === 'Quiz created successfully') {
-                alert('The quiz was saved successfully');
+                {props.createQuizData(name, description, subject)}
+                {props.changeMode("createquizsaved")}
             } else {
                 alert('There was a problem saving the quiz');
             }
@@ -43,27 +44,42 @@ function CreateQuizForm(props) {
 
     return (
     <>
-        <h1>Creating a new quiz</h1>
+        <h1 className="create-quiz-page-title">Creating a new quiz</h1>
         <div>
             <form autoComplete="off" onSubmit={saveQuestion}>
-                <div>
-                    <label htmlFor='name'>Assessment Name</label>
-                    <input type='text' name='name' onChange={(e) => setName(e.target.value)} required/>
+                <div className="row">
+                    <div className="col-md-3">
+                        <label htmlFor='name'>Assessment Name</label>
+                    </div>
+                    <div className="col-md-2">
+                        <input type='text' name='name' className="create-quiz-fields" placeholder="Enter the quiz name"
+                        onChange={(e) => setName(e.target.value)} required/>
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor='description'>Assessment Description</label>
-                    <input type='text' name='description' onChange={(e) => setDescription(e.target.value)}/>
+                <div className="row">
+                    <div className="col-md-3">
+                        <label htmlFor='description'>Assessment Description</label>
+                    </div>
+                    <div className="col-md-2">
+                        <input type='text' name='description' className="create-quiz-fields" placeholder="Enter the quiz description"
+                        onChange={(e) => setDescription(e.target.value)}/>
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor='subject'>Subject</label>
-                    <select onChange={(e) => setSubject(e.target.value)}>
-                        <option value="math">Math</option>
-                        <option value="science">Science</option>
-                        <option value="english">English</option>
-                    </select>
+                <div className="row">
+                    <div className="col-md-3">
+                        <label htmlFor='subject'>Subject</label>
+                    </div>
+                    <div className="col-md-2">
+                        <select className="create-quiz-fields" onChange={(e) => setSubject(e.target.value)}>
+                            <option value="math">Math</option>
+                            <option value="science">Science</option>
+                            <option value="english">English</option>
+                        </select>
+                    </div>
                 </div>
-                <p>Question 1</p>
                 <div id='wrapper'>
+                    <label htmlFor='question1'>Question 1</label>
+                    <br />
                     <select onChange={(e) => saveSelectedQuestion(e.target.value, 0)}>
                     {
                         props.questions.map((question, index) => {
@@ -72,8 +88,9 @@ function CreateQuizForm(props) {
                     }
                     </select>
                 </div>
-                <p>Question 2</p>
                 <div id='wrapper'>
+                    <label htmlFor='question2'>Question 2</label>
+                    <br />
                     <select onChange={(e) => saveSelectedQuestion(e.target.value, 1)}>
                     {
                         props.questions.map((question, index) => {
@@ -82,8 +99,9 @@ function CreateQuizForm(props) {
                     }
                     </select>
                 </div>
-                <p>Question 3</p>
                 <div id='wrapper'>
+                    <label htmlFor='question3'>Question 3</label>
+                    <br />
                     <select onChange={(e) => saveSelectedQuestion(e.target.value, 2)}>
                     {
                         props.questions.map((question, index) => {
@@ -92,8 +110,9 @@ function CreateQuizForm(props) {
                     }
                     </select>
                 </div>
-                <p>Question 4</p>
                 <div id='wrapper'>
+                    <label htmlFor='question4'>Question 4</label>
+                    <br />
                     <select onChange={(e) => saveSelectedQuestion(e.target.value, 3)}>
                     {
                         props.questions.map((question, index) => {
@@ -102,8 +121,9 @@ function CreateQuizForm(props) {
                     }
                     </select>
                 </div>
-                <p>Question 5</p>
                 <div id='wrapper'>
+                    <label htmlFor='question5'>Question 5</label>
+                    <br />
                     <select onChange={(e) => saveSelectedQuestion(e.target.value, 4)}>
                     {
                         props.questions.map((question, index) => {

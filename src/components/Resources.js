@@ -11,15 +11,15 @@ const styles = {
     }
   }
 
-const Welcome = (props) => {
+function Resources(props) {
     return (
         <Jumbotron style={styles.Jumbotron}>
             <h1 className="display-5">Welcome, {props.userName}.</h1>
-            <p>Take quiz to get started.</p>
+            <p>Here are some resources to help you</p>
             <p className="lead">
             </p>
         </Jumbotron>
     ) 
 }
 
-export default Welcome;
+export default Resources;

@@ -322,6 +322,42 @@ h1,h2,h3,h4,h5,h6,label,span {
    padding: 5px;
    margin: 10px;
  }
+
+ .create-quiz-fields {
+   margin-left: -65px;
+   width: 518px;
+   height: 35px;
+   margin-bottom: 10px;
+ }
+
+ .create-quiz-page-title {
+  margin-bottom: 15px;
+ }
+
+ select {
+  text-indent: 5px;
+  height: 35px;
+  margin-bottom: 10px;
+ }
+
+ ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(128, 126, 126);
+  opacity: .6; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: rgb(128, 126, 126);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: rgb(128, 126, 126);
+}
+
+.disabled-field {
+  cursor: not-allowed;
+}
+
+
 //div {
 //  border-style: solid;
 //}
