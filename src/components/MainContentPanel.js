@@ -9,6 +9,7 @@ import axios from 'axios';
 import CreateQuizForm from './CreateQuizForm';
 import CreateQuizFormSaved from './CreateQuizFormSaved';
 import Resources from './Resources';
+import AssignQuiz from './AssignQuiz';
 
 const MainContentPanel = (props) => {
 
@@ -74,6 +75,7 @@ const MainContentPanel = (props) => {
                                               newQuizDescription={newQuizDescription}
                                               changeMode={props.changeMode}/>}
         {props.mode === "resources" && <Resources userName={props.userName}/>}
+        {props.mode === "assignquiz" && <AssignQuiz userName={props.userName}/>}
     </div>
   );
 }
