@@ -14,12 +14,9 @@ const styles = {
 const Welcome = (props) => {
     return (
         <Jumbotron style={styles.Jumbotron}>
-            <h1 className="display-5">Begin your assessment</h1>
-            <p className="lead">This is an assessment that will help us learn more about {props.userName}.</p>
-            <hr className="my-2" />
-            <p>The assessment will contain questions from various subjects.</p>
+            <h1 className="display-5">Welcome, {props.userName}.</h1>
+            <p>Take quiz to get started.</p>
             <p className="lead">
-            <Button color="primary">Start</Button>
             </p>
         </Jumbotron>
     ) 

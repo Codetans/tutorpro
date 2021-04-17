@@ -323,6 +323,7 @@ h1,h2,h3,h4,h5,h6,label,span {
    margin: 10px;
  }
 
+
  .create-quiz-fields {
    margin-left: -65px;
    width: 518px;
@@ -357,6 +358,22 @@ h1,h2,h3,h4,h5,h6,label,span {
   cursor: not-allowed;
 }
 
+
+
+ //resource page
+.outerWrapper {
+  display: flex;
+  min-height: 10vw;
+  min-width: 10vw;
+  justify-content: space-around;
+  a{
+    padding: 0.2vw;
+
+  }
+}
+.innerWrapper{
+  padding: 1vw;
+}
 
 //div {
 //  border-style: solid;

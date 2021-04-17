@@ -13,8 +13,12 @@ const SideNav = (props) =>  {
                 <ListGroupItem tag="a" href="#" action>Tutorials</ListGroupItem>
                 {(props.userType !== "student") ? (
                     <ListGroupItem tag="a" href="#" action onClick={() => {props.changeMode("createquiz")}}>Create Quiz</ListGroupItem>) : (null)}
+
                 <ListGroupItem tag="a" href="#" action onClick={() => {props.changeMode("resources")}}>Resources</ListGroupItem>
                 <ListGroupItem tag="a" href="#" action>Find a Tutor</ListGroupItem>
+
+
+
             </ListGroup>
         </div>
     )
