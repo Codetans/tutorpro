@@ -13,6 +13,23 @@ const styles = {
   }
 
 function AssignQuiz(props) {
+
+    const [searchedStudent, setSearchedStudent] = useState("");
+    const [matchedStudent, setMatchedStudent] = useState([]);
+
+    const findMatches = (searchedStudent, studentData) => {
+        return studentData.filter(user => {
+          const regex = new RegExp(searchedStudent);
+          return user.name.match(regex);
+        });
+      };
+
+      const handleChange = e => {
+        setSearchedStudent(e.target.value);
+        setMatchedStudent(findMatches(searchedStudent, studentData));
+        //displayMatches();
+      };
+
     useEffect(() => {
         async function fetchData() {
             await axios.get(`http://localhost:8080/user/getAllStudents`)
@@ -29,6 +46,22 @@ function AssignQuiz(props) {
             <p>Here are some resources to help you</p>
             <p className="lead">
             </p>
+            <div>
+            <FormInput
+                type="text"
+                placeholder="type student name here"
+                onChange={handleChange}
+                />
+            </div>
+            <div>
+                {matchedStudent.map((user, i) => (
+                <input
+                    userName={user.userName}
+                    key={i}
+                    onClick={() => }
+                />
+        ))}
+            </div>
         </Jumbotron>
     ) 
 }
