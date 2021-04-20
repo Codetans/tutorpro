@@ -31,7 +31,7 @@ public class UserController {
 
     @GetMapping(path="/getAllStudents")
     @ResponseBody
-    List<User> getAllStudents() {
+    List<StudentInfo> getAllStudents() {
         return userRepository.findByUserType("student");
     }
 }

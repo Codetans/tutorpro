@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Jumbotron } from 'reactstrap';
+import { Jumbotron, Button } from 'reactstrap';
 import axios from 'axios';
+import Autocomplete from 'react-autocomplete';
+import "../stylesheets/assignQuiz.css"
 
 const styles = {
     container: {
@@ -13,54 +15,83 @@ const styles = {
   }
 
 function AssignQuiz(props) {
+    var [searchedStudent, setSearchedStudent] = useState({name: '', id: ''});
+    var [searchedAssessment, setSearchedAssessment] = useState({name: '', assessmentID: ''});
 
-    const [searchedStudent, setSearchedStudent] = useState("");
-    const [matchedStudent, setMatchedStudent] = useState([]);
+    let renderItems = (data, value) => {
+        return (
+            data.name.toLowerCase().indexOf(value.toLowerCase()) !== -1
+        );
+    }
 
-    const findMatches = (searchedStudent, studentData) => {
-        return studentData.filter(user => {
-          const regex = new RegExp(searchedStudent);
-          return user.name.match(regex);
-        });
-      };
-
-      const handleChange = e => {
-        setSearchedStudent(e.target.value);
-        setMatchedStudent(findMatches(searchedStudent, studentData));
-        //displayMatches();
-      };
-
-    useEffect(() => {
-        async function fetchData() {
-            await axios.get(`http://localhost:8080/user/getAllStudents`)
-                .then(response => {
-                    console.log(response.data)
-                })
+    let saveAssignment = (e) => {
+        e.preventDefault();
+        console.log(searchedAssessment);
+        if(searchedStudent.id != undefined && searchedAssessment.id != undefined) {
+            console.log('student name is', searchedStudent.name)
+            console.log('student id is', searchedStudent.id.id)
+            console.log('assessment name is', searchedAssessment.name)
+            console.log('assessment id is', searchedAssessment.id.assessmentID)
         }
-        fetchData();
-    }, []);
+
+    }
 
     return (
         <Jumbotron style={styles.Jumbotron}>
             <h1 className="display-5">Assign quizzes to users</h1>
-            <p>Here are some resources to help you</p>
-            <p className="lead">
-            </p>
             <div>
-            <FormInput
-                type="text"
-                placeholder="type student name here"
-                onChange={handleChange}
-                />
-            </div>
-            <div>
-                {matchedStudent.map((user, i) => (
-                <input
-                    userName={user.userName}
-                    key={i}
-                    onClick={() => }
-                />
-        ))}
+                <form onSubmit={saveAssignment}>
+                    <div className="row">
+                        <div className="col-md-3">
+                            <p>Search for a user</p>
+                            <Autocomplete
+                                value={searchedStudent.name}
+                                items={props.allStudents}
+                                getItemValue={item => item.name}
+                                shouldItemRender={renderItems}
+                                renderMenu={item => (
+                                    <div className="dropdown">
+                                        {item}
+                                    </div>
+                                )}
+                                renderItem={(item, isHighlighted) => 
+                                    <div key={item.id} className={`item ${isHighlighted ? 'selected-item' : ''}`}>
+                                        {item.name}
+                                    </div>}
+                                onChange={(event, name, id) => setSearchedStudent({name, id})}
+                                onSelect={(name, id) => setSearchedStudent({name, id})}
+                                required
+                                >
+                            </Autocomplete>
+                        </div>
+                        <div className="col-md-3">
+                            <p>Search for a quiz</p>
+                            <Autocomplete
+                                value={searchedAssessment.name}
+                                items={props.allAssessments}
+                                getItemValue={item => item.name}
+                                shouldItemRender={renderItems}
+                                renderMenu={item => (
+                                    <div className="dropdown">
+                                        {item}
+                                    </div>
+                                )}
+                                renderItem={(item, isHighlighted) => 
+                                    <div key={item.assessmentID} className={`item ${isHighlighted ? 'selected-item' : ''}`}>
+                                        {item.name}
+                                    </div>}
+                                onChange={(event, name, id) => setSearchedAssessment({name, id})}
+                                onSelect={(name, id) => setSearchedAssessment({name, id})}
+                                required
+                                >
+                            </Autocomplete>
+                        </div>
+                        <div className="col-md-3">
+                            <label htmlFor='addQuestion'></label>
+                            <Button type="submit" className='alignButton'>Assign Assessment</Button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </Jumbotron>
     ) 

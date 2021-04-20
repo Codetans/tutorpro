@@ -38,4 +38,10 @@ public class AssessmentController {
         return assessmentService.createQuiz(assessmentWithQuestion);
     }
 
+    @GetMapping(path="/getAllAssessments")
+    public @ResponseBody
+    List<Assessment> getAllAssessments() {
+        return (List<Assessment>) assessmentRepository.findAll();
+    }
+
 }

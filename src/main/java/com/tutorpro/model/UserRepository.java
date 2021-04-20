@@ -13,6 +13,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     public User findByEmail(String email);
 
-    public List<User> findByUserType(String Type);
+    public List<StudentInfo> findByUserType(String Type);
 
 }
