@@ -26,14 +26,21 @@ function AssignQuiz(props) {
 
     let saveAssignment = (e) => {
         e.preventDefault();
-        console.log(searchedAssessment);
         if(searchedStudent.id != undefined && searchedAssessment.id != undefined) {
-            console.log('student name is', searchedStudent.name)
-            console.log('student id is', searchedStudent.id.id)
-            console.log('assessment name is', searchedAssessment.name)
-            console.log('assessment id is', searchedAssessment.id.assessmentID)
+            axios.post('http://localhost:8080/assessment/assignQuiz',{
+                assessmentID: searchedAssessment.id.assessmentID,
+                studentID: searchedStudent.id.id
+            })
+            .then(response => {
+                if(response.data === 'Student is already assigned to this quiz') {
+                    alert('Student is already assigned to this quiz');
+                } else if (response.data === 'There was a problem saving the quiz assignment') {
+                    alert('There was a problem saving the quiz assignment. Please try again');
+                } else if (response.data === 'successfully saved quiz assignment') {
+                    alert(`User '${searchedStudent.name}' was successfully assigned to quiz '${searchedAssessment.name}'`);
+                }
+            })
         }
-
     }
 
     return (

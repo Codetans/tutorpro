@@ -17,14 +17,14 @@ public class AssessmentToStudents {
     public int getAssessmentID() {
         return assessmentID;
     }
-    public void setAssessmentID(int assessmentID) {
+    public void setAssessmentID(int assessmentID ) {
         this.assessmentID = assessmentID;
     }
 
     public int getStudentID() {
         return studentID;
     }
-    public void setStudentID(Integer StudentID) {
+    public void setStudentID(int studentID) {
         this.studentID = studentID;
     }
 

@@ -11,4 +11,6 @@ import java.util.List;
 public interface AssessmentToStudentsRepository extends CrudRepository<AssessmentToStudents, Integer> {
     @Query(value = "SELECT max(assessment_to_StudentID) FROM assessment_to_students", nativeQuery = true)
     public int assessmentToStudentIdMax();
+
+    public AssessmentToStudents findByStudentIDAndAssessmentID(int assessmentId, int studentId);
 }

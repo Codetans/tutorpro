@@ -1,10 +1,7 @@
 package com.tutorpro.controller;
 
-import com.tutorpro.model.Assessment;
-import com.tutorpro.model.AssessmentWithQuestion;
-import com.tutorpro.model.QuestionWithAnswers;
+import com.tutorpro.model.*;
 import com.tutorpro.services.AssessmentService;
-import com.tutorpro.model.AssessmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +39,12 @@ public class AssessmentController {
     public @ResponseBody
     List<Assessment> getAllAssessments() {
         return (List<Assessment>) assessmentRepository.findAll();
+    }
+
+    @PostMapping(path="/assignQuiz")
+    public @ResponseBody
+    String assignQuiz(@RequestBody AssessmentToStudents assessmentToStudents) {
+        return assessmentService.assignQuiz(assessmentToStudents.getStudentID(), assessmentToStudents.getAssessmentID());
     }
 
 }

@@ -19,12 +19,16 @@ public class AssessmentService {
     QuestionRepository questionRepository;
     @Autowired
     AnswersRepository answersRepository;
+    @Autowired
+    AssessmentToStudentsRepository assessmentToStudentsRepository;
 
     Assessment assessment = new Assessment();
     AssessmentToQuestions assessmentToQuestions = new AssessmentToQuestions();
+    AssessmentToStudents assessmentToStudents = new AssessmentToStudents();
     int asssessmentId = 0;
     int questionId = 0;
     int assessmentToQuestionId = 0;
+    int assessmentToStudentId = 0;
 
     public List<Assessment> getStudentAssessments(int studentId) {
         return assessmentRepository.studentAssessments(studentId);
@@ -109,5 +113,33 @@ public class AssessmentService {
              assessmentToQuestionsRepository.save(assessmentToQuestions);
          }
          return "Quiz created successfully";
+    }
+
+    public int createAssessmentToStudentId() {
+        try {
+            assessmentToStudentId = assessmentToStudentsRepository.assessmentToStudentIdMax();
+            assessmentToStudentId+=1;
+        } catch(Exception e) {
+            assessmentToStudentId+=1;
+        }
+
+        return assessmentToStudentId;
+    }
+
+    public String assignQuiz(int studentId, int asssessmentId) {
+
+        if(assessmentToStudentsRepository.findByStudentIDAndAssessmentID(studentId, asssessmentId) == null) {
+            try {
+                assessmentToStudents.setAssessmentToStudentID(createAssessmentToStudentId());
+                assessmentToStudents.setStudentID(studentId);
+                assessmentToStudents.setAssessmentID(asssessmentId);
+                assessmentToStudentsRepository.save(assessmentToStudents);
+                return "successfully saved quiz assignment";
+            } catch(Exception e) {
+                return "There was a problem saving the quiz assignment";
+            }
+        } else {
+            return "Student is already assigned to this quiz";
+        }
     }
 }
