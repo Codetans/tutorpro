@@ -54,17 +54,6 @@ const MainContentPanel = (props) => {
 				.then(questions => {
 					setAllQuestions(questions.data)
 				})
-
-        await axios.get(`http://localhost:8080/user/getAllStudents`)
-        .then(students => {
-            setAllStudents(students.data)
-        })
-
-        await axios.get(`http://localhost:8080/assessment/getAllAssessments`)
-        .then(assessments => {
-            setAllAssessments(assessments.data);
-            console.log(assessments.data);
-        })
 		}
 		fetchData();
 	}, []);
@@ -88,7 +77,7 @@ const MainContentPanel = (props) => {
                                               newQuizDescription={newQuizDescription}
                                               changeMode={props.changeMode}/>}
         {props.mode === "resources" && <Resources userName={props.userName}/>}
-        {props.mode === "assignquiz" && <AssignQuiz allStudents={allStudents} allAssessments={allAssessments}/>}
+        {props.mode === "assignquiz" && <AssignQuiz/>}
     </div>
   );
 }

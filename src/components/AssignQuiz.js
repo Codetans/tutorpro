@@ -14,9 +14,28 @@ const styles = {
     }
   }
 
-function AssignQuiz(props) {
+function AssignQuiz() {
     var [searchedStudent, setSearchedStudent] = useState({name: '', id: ''});
     var [searchedAssessment, setSearchedAssessment] = useState({name: '', assessmentID: ''});
+    const [allStudents, setAllStudents] = useState([]);
+    const [allAssessments, setAllAssessments] = useState([]);
+
+
+    useEffect(() => {
+        async function fetchData() {
+            await axios.get(`http://localhost:8080/user/getAllStudents`)
+            .then(students => {
+                setAllStudents(students.data)
+            })
+
+            await axios.get(`http://localhost:8080/assessment/getAllAssessments`)
+            .then(assessments => {
+                setAllAssessments(assessments.data);
+                console.log(assessments.data);
+            })
+		}
+		fetchData();
+    }, [])
 
     let renderItems = (data, value) => {
         return (
@@ -47,13 +66,14 @@ function AssignQuiz(props) {
         <Jumbotron style={styles.Jumbotron}>
             <h1 className="display-5">Assign quizzes to users</h1>
             <div>
+                {(allAssessments.length > 0 && allStudents.length > 0) ? 
                 <form onSubmit={saveAssignment}>
                     <div className="row">
                         <div className="col-md-3">
                             <p>Search for a user</p>
                             <Autocomplete
                                 value={searchedStudent.name}
-                                items={props.allStudents}
+                                items={allStudents}
                                 getItemValue={item => item.name}
                                 shouldItemRender={renderItems}
                                 renderMenu={item => (
@@ -75,7 +95,7 @@ function AssignQuiz(props) {
                             <p>Search for a quiz</p>
                             <Autocomplete
                                 value={searchedAssessment.name}
-                                items={props.allAssessments}
+                                items={allAssessments}
                                 getItemValue={item => item.name}
                                 shouldItemRender={renderItems}
                                 renderMenu={item => (
@@ -99,6 +119,7 @@ function AssignQuiz(props) {
                         </div>
                     </div>
                 </form>
+                : <div>loading...</div>}
             </div>
         </Jumbotron>
     ) 
