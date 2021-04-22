@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import { Button } from 'reactstrap';
 import axios from 'axios';
+import URL from '../url.js'
 
 export function VHelp({message}) {
     return <p className="help">{message}</p>
@@ -25,7 +26,7 @@ function CreateQuizForm(props) {
         console.log(subject)
         console.log(questions)
         
-        axios.post('http://localhost:8080/assessment/create', {
+        axios.post(`${URL}assessment/create`, {
         name: name,
         description: description,
         subject: subject,

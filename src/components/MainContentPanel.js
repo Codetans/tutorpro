@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from 'reactstrap';
 import SelectedQuiz from './SelectedQuiz';
 import Profile from './Profile';
 import QuizList from './QuizList';
@@ -10,6 +9,7 @@ import CreateQuizForm from './CreateQuizForm';
 import CreateQuizFormSaved from './CreateQuizFormSaved';
 import Resources from './Resources';
 import AssignQuiz from './AssignQuiz';
+import URL from '../url.js'
 
 const MainContentPanel = (props) => {
 
@@ -19,8 +19,6 @@ const MainContentPanel = (props) => {
   const [quizId, setQuizId] = useState(0);
   const [quizName, setQuizName] = useState('');
   const [allQuestions, setAllQuestions] = useState([]);
-  const [allStudents, setAllStudents] = useState([]);
-  const [allAssessments, setAllAssessments] = useState([]);
 
   const [newQuizName, setNewQuizName] = useState('');
   const [newQuizSubject, setNewQuizSubject] = useState('');
@@ -45,12 +43,12 @@ const MainContentPanel = (props) => {
 
   useEffect(() => {
 		async function fetchData() {
-			await axios.get(`http://localhost:8080/assessment/getStudentAssessments?studentID=${props.userId}`)
+			await axios.get(`${URL}assessment/getStudentAssessments?studentID=${props.userId}`)
 				.then(response => {
 					setAssessmentList(response.data);
 				})
 
-        await axios.get(`http://localhost:8080/question/getAllQuestions`)
+        await axios.get(`${URL}question/getAllQuestions`)
 				.then(questions => {
 					setAllQuestions(questions.data)
 				})

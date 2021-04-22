@@ -1,6 +1,5 @@
 import React from 'react'
 import { ListGroup, ListGroupItem } from 'reactstrap';
-import { Container } from 'reactstrap';
 
 const SideNav = (props) =>  {
     return (

@@ -86,10 +86,6 @@ public class AssessmentService {
         questionRepository.deleteById(questionId);
     }
 
-    // public void deleteAssessmentToQuestion() {
-    //     assessmentToQuestionsRepository.deleteById(assessmentToQuestionsId);
-    // }
-
     public String createQuiz(AssessmentWithQuestion assessmentWithQuestion) {
         int newAssessmentId = createAssessmentId();
         assessment.setAssessmentID(newAssessmentId);

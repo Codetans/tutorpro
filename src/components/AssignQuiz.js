@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Jumbotron, Button } from 'reactstrap';
 import axios from 'axios';
 import Autocomplete from 'react-autocomplete';
-import "../stylesheets/assignQuiz.css"
+import "../stylesheets/assignQuiz.css";
+import URL from '../url.js'
 
 const styles = {
     container: {
@@ -23,12 +24,12 @@ function AssignQuiz() {
 
     useEffect(() => {
         async function fetchData() {
-            await axios.get(`http://localhost:8080/user/getAllStudents`)
+            await axios.get(`${URL}user/getAllStudents`)
             .then(students => {
                 setAllStudents(students.data)
             })
 
-            await axios.get(`http://localhost:8080/assessment/getAllAssessments`)
+            await axios.get(`${URL}assessment/getAllAssessments`)
             .then(assessments => {
                 setAllAssessments(assessments.data);
                 console.log(assessments.data);
@@ -46,7 +47,7 @@ function AssignQuiz() {
     let saveAssignment = (e) => {
         e.preventDefault();
         if(searchedStudent.id != undefined && searchedAssessment.id != undefined) {
-            axios.post('http://localhost:8080/assessment/assignQuiz',{
+            axios.post(`${URL}assessment/assignQuiz`,{
                 assessmentID: searchedAssessment.id.assessmentID,
                 studentID: searchedStudent.id.id
             })

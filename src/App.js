@@ -5,7 +5,7 @@ import Dashboard from './components/Dashboard';
 import axios from 'axios';
 import LoginRegistration from './components/LoginRegister';
 import { useEffect } from 'react';
-import Header from "./components/Header";
+import URL from './url.js'
 
 require.context('./stylesheets/', true, /\.(css|scss)$/i)
 
@@ -39,7 +39,7 @@ export default function App() {
     setNewPassword(newPassword);
     setNewUserType(newUserType);
 
-    axios.post('http://localhost:8080/user/create', {
+    axios.post(`${URL}user/create`, {
         name: newUserName,
         email: newEmail,
         password: newPassword,
@@ -57,7 +57,7 @@ export default function App() {
   }
 
   function authenticateUser(authUseremail, authPassword) {  
-    axios.post('http://localhost:8080/user/authenticateUser', {
+    axios.post(`${URL}user/authenticateUser`, {
         email: authUseremail,
         password: authPassword
     })
