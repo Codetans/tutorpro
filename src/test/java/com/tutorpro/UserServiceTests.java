@@ -1,6 +1,7 @@
 package com.tutorpro;
 
 import com.tutorpro.model.User;
+import com.tutorpro.model.UserRepository;
 import com.tutorpro.services.UserService;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.*;
@@ -14,9 +15,12 @@ import java.util.HashMap;
 @SpringBootTest
 class UserServiceTests {
 	User user = new User();
+	int userId;
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private UserRepository userRepository;
 
 	@BeforeAll
 	void setUp() {
@@ -24,6 +28,13 @@ class UserServiceTests {
 		user.setName("UnitTestUser");
 		user.setUserType("student");
 		user.setPassword("UnitTest");
+
+		try {
+			userId = userRepository.userIdMax();
+			userId+=1;
+		} catch(Exception e) {
+			userId+=1;
+		}
 	}
 
 	@Test
@@ -45,6 +56,7 @@ class UserServiceTests {
 		testUserInfo.put("userEmail", user.getEmail());
 		testUserInfo.put("userName", user.getName());
 		testUserInfo.put("userType", user.getUserType());
+		testUserInfo.put("userId", userId);
 		Assertions.assertEquals(testUserInfo, userService.authenticateUserCredentials(user));
 	}
 

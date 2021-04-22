@@ -81,7 +81,7 @@ function CreateQuizForm(props) {
                 <div id='wrapper'>
                     <label htmlFor='question1'>Question 1</label>
                     <br />
-                    <select onChange={(e) => saveSelectedQuestion(e.target.value, 0)}>
+                    <select onChange={(e) => saveSelectedQuestion(e.target.value, 0)} className="questionSelectWidth">
                     {
                         props.questions.map((question, index) => {
                             return(<option key={index} value={question.questionId}>{question.question}</option>)
@@ -92,7 +92,7 @@ function CreateQuizForm(props) {
                 <div id='wrapper'>
                     <label htmlFor='question2'>Question 2</label>
                     <br />
-                    <select onChange={(e) => saveSelectedQuestion(e.target.value, 1)}>
+                    <select onChange={(e) => saveSelectedQuestion(e.target.value, 1)} className="questionSelectWidth">
                     {
                         props.questions.map((question, index) => {
                             return(<option key={index} value={question.questionId}>{question.question}</option>)
@@ -103,7 +103,7 @@ function CreateQuizForm(props) {
                 <div id='wrapper'>
                     <label htmlFor='question3'>Question 3</label>
                     <br />
-                    <select onChange={(e) => saveSelectedQuestion(e.target.value, 2)}>
+                    <select onChange={(e) => saveSelectedQuestion(e.target.value, 2)} className="questionSelectWidth">
                     {
                         props.questions.map((question, index) => {
                             return(<option key={index} value={question.questionId}>{question.question}</option>)
@@ -114,7 +114,7 @@ function CreateQuizForm(props) {
                 <div id='wrapper'>
                     <label htmlFor='question4'>Question 4</label>
                     <br />
-                    <select onChange={(e) => saveSelectedQuestion(e.target.value, 3)}>
+                    <select onChange={(e) => saveSelectedQuestion(e.target.value, 3)} className="questionSelectWidth">
                     {
                         props.questions.map((question, index) => {
                             return(<option key={index} value={question.questionId}>{question.question}</option>)
@@ -125,7 +125,7 @@ function CreateQuizForm(props) {
                 <div id='wrapper'>
                     <label htmlFor='question5'>Question 5</label>
                     <br />
-                    <select onChange={(e) => saveSelectedQuestion(e.target.value, 4)}>
+                    <select onChange={(e) => saveSelectedQuestion(e.target.value, 4)} className="questionSelectWidth">
                     {
                         props.questions.map((question, index) => {
                             return(<option key={index} value={question.questionId}>{question.question}</option>)

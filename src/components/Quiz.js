@@ -7,7 +7,7 @@ const Quiz = (props) => {
         <>
             <Card className="card-shadow">
                 <CardTitle tag="h5" className="name-desc-position"><b>{props.assessment.name}</b></CardTitle>
-                <CardImg top width="100%" src={process.env.PUBLIC_URL + props.assessment.photoName} />
+                <CardImg top width="100%" src={props.srcImage} />
                 <CardText className="name-desc-position">{props.assessment.description}</CardText>
                 <Button color="info" tag="a" href="#" onClick={() => {props.setSelectedQuiz(props.assessment.assessmentID, props.assessment.name)}}>Take this quiz</Button>
             </Card>
